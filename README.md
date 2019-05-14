@@ -7,12 +7,20 @@ para a disciplina de programação avançada orientada a objetos da universidade
 
 <p>Java EE</p>
 <p>JPA</p>
+<p>JDBC</p>
 <p>hibernate</p>
 <p>html5</p>
 <p>css</p>
 <p>javascript</p>
 <p>bootstrap 4</p>
 <p>mysql</p>
+</br>
+
+<h3>Autores:</h3>
+
+<p><a href="https://github.com/WitaloSena">witalo Sena</a></p>
+<p><a href="https://github.com/Ikusaba">Marco Caja</a></p>
+<p><a href="https://github.com/wilkson-carlos">Wilkson Carlos</a></p>
 
 
 
