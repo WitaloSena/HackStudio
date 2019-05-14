@@ -2,7 +2,8 @@
 Desenvolvimento de sistema de gerenciamento de estúdio de tatuagem
 para a disciplina de programação avançada orientada a objetos.
 
-<bold>Tecnologias usadas neste projeto:<bold>
+
+<h3>Tecnologias usadas neste projeto</h3>
 
 <strong><p>Java EE</p><strong>
 <p>JPA</p>
