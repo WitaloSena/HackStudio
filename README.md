@@ -4,7 +4,7 @@ para a disciplina de programação avançada orientada a objetos.
 
 <bold>Tecnologias usadas neste projeto:<bold>
 
-<p>Java EE</p>
+<strong><p>Java EE</p><strong>
 <p>JPA</p>
 <p>hibernate</p>
 <p>html5</p>
