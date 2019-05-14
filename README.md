@@ -7,6 +7,7 @@ para a disciplina de programação avançada orientada a objetos da universidade
 
 <p>Java EE</p>
 <p>JPA</p>
+<p>JDBC</p>
 <p>hibernate</p>
 <p>html5</p>
 <p>css</p>
