@@ -16,7 +16,7 @@ para a disciplina de programação avançada orientada a objetos da universidade
 <p>mysql</p>
 </br>
 
-<p>autores:</p>
+<h3>autores:</h3>
 
 <p><a href="https://github.com/WitaloSena">witalo Sena</a></p>
 <p><a href="https://github.com/Ikusaba">Marco Caja</a></p>
