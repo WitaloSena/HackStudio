@@ -34,6 +34,7 @@ CREATE TABLE agendamento(
     id int AUTO_INCREMENT,
     data date NOT NULL,
     horario varchar(5) NOT NULL,
+    preco double(5,2) NOT NULL,
     fk_cpf_cliente varchar(11),
     fk_id_tatudor int,
     
