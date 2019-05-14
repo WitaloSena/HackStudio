@@ -1,11 +1,11 @@
 # TattoHub
 Desenvolvimento de sistema de gerenciamento de estúdio de tatuagem
-para a disciplina de programação avançada orientada a objetos.
+para a disciplina de programação avançada orientada a objetos da universidade nove de julho.
 
 
-<h3>Tecnologias usadas neste projeto</h3>
+<h3>Tecnologias usadas neste projeto:</h3>
 
-<strong><p>Java EE</p><strong>
+<p>Java EE</p>
 <p>JPA</p>
 <p>hibernate</p>
 <p>html5</p>
