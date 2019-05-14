@@ -14,6 +14,13 @@ para a disciplina de programação avançada orientada a objetos da universidade
 <p>javascript</p>
 <p>bootstrap 4</p>
 <p>mysql</p>
+</br>
+
+<p>autores:</p>
+
+<p><a href="https://github.com/WitaloSena">witalo Sena</a></p>
+<p><a href="https://github.com/Ikusaba">Marco Caja</a></p>
+<p><a href="https://github.com/wilkson-carlos">Wilkson Carlos</a></p>
 
 
 
