@@ -65,7 +65,7 @@ CREATE TABLE fornecedor(
 
 CREATE TABLE estoque(
     id int AUTO_INCREMENT,
-    nome varchar(30) NOT NULL,
+    nome varchar(40) NOT NULL,
     quantidade int(3) NOT NULL,
     valor_unitario double(5,2) NOT NULL,
     fk_id_fornecedor int NOT NULL,
