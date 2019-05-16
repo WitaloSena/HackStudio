@@ -1,6 +1,29 @@
 CREATE DATABASE hackstudio_db;
 
-CREATE TABLE cliente(
+CREATE TABLE usuarios(
+    id int AUTO_INCREMENT,
+    username varchar(30) NOT NULL,
+    password varchar(30) NOT NULL,
+    fk_id_funcionario int NOT NULL,
+
+    CONSTRAINT PK_ID
+        PRIMARY KEY (id),
+        
+    CONSTRAINT FK_ID_FUNCIONARIO
+        FOREIGN KEY fk_id_funcionario
+        REFERENCES funcionarios(id)
+);
+
+CREATE TABLE funcionarios(
+    id int AUTO_INCREMENT,
+    nome varchar(50) NOT NULL,
+    email varchar(40) NOT NULL,
+    cpf varchar(11) NOT NULL,
+    telefone varchar(11) NOT NULL,
+
+);
+
+CREATE TABLE clientes(
     id int AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
     email varchar(40) NOT NULL,
@@ -16,9 +39,10 @@ CREATE TABLE cliente(
         UNIQUE (cpf)
 )ENGINE=InnoDB;
 
-CREATE TABLE tatuador(
+CREATE TABLE tatuadores(
     id int AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
+    email varchar(40) NOT NULL,
     cpf varchar(11) NOT NULL,
     endereco varchar(50) NOT NULL,
     telefone varchar(11) NOT NULL,
@@ -30,7 +54,7 @@ CREATE TABLE tatuador(
         PRIMARY KEY (id)
 );
 
-CREATE TABLE agendamento(
+CREATE TABLE agendamentos(
     id int AUTO_INCREMENT,
     data date NOT NULL,
     horario varchar(5) NOT NULL,
@@ -50,9 +74,10 @@ CREATE TABLE agendamento(
         PRIMARY KEY (id)
 );
 
-CREATE TABLE fornecedor(
+CREATE TABLE fornecedores(
     id int AUTO_INCREMENT,
     nome varchar(30) NOT NULL,
+    email varchar(30) NOT NULL,
     endereco varchar(50) NOT NULL,
     cnpj varchar(13) NOT NULL,
 
