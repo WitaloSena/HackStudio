@@ -1,6 +1,6 @@
 # HackStudio
 Desenvolvimento de sistema de gerenciamento de estúdio de tatuagem
-para a disciplina de programação avançada orientada a objetos da universidade nove de julho.
+para a disciplina de Programação Avançada Orientada à Objetos da <b>Universidade Nove de Julho.<b>
 
 
 <h3>Tecnologias usadas neste projeto:</h3>
@@ -8,18 +8,18 @@ para a disciplina de programação avançada orientada a objetos da universidade
 <p>Java EE</p>
 <p>JPA</p>
 <p>JDBC</p>
-<p>hibernate</p>
-<p>html5</p>
-<p>css</p>
-<p>javascript</p>
-<p>bootstrap 4</p>
-<p>mysql</p>
+<p>Hibernate</p>
+<p>HTML5</p>
+<p>CSS</p>
+<p>JavaScript</p>
+<p>Bootstrap 4</p>
+<p>MySQL</p>
 </br>
 
 <h3>Autores:</h3>
 
-<p><a href="https://github.com/WitaloSena">witalo Sena</a></p>
-<p><a href="https://github.com/Ikusaba">Marco Caja</a></p>
+<p><a href="https://github.com/WitaloSena">Witalo Sena</a></p>
+<p><a href="https://github.com/Ikusaba">Marco Cajá</a></p>
 <p><a href="https://github.com/wilkson-carlos">Wilkson Carlos</a></p>
 
 
