@@ -1,9 +1,11 @@
 <%-- 
     Document   : index
     Created on : 15/05/2019, 09:45:01
-    Author     : witalo.sena
+    Author     : witalo
 --%>
 
-<%@include file="startbootstrap-sb-admin-gh-pages/blank.html" %>
+<%@include file="template/header.html" %>
 
+<%@include file="template/main.html" %>
 
+<%@include file="template/footer.html" %>
