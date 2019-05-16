@@ -7,15 +7,10 @@ public class Estoque {
     private double valor_unitario;
     private int fk_id_fornecedor;
 
-    public Estoque(String nome, String quantidade, double valor_unitario, int fk_id_fornecedor) {
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.valor_unitario = valor_unitario;
-        this.fk_id_fornecedor = fk_id_fornecedor;
+    public Estoque() {
     }
 
-    public Estoque(int id, String nome, String quantidade, double valor_unitario, int fk_id_fornecedor) {
-        this.id = id;
+    public Estoque(String nome, String quantidade, double valor_unitario, int fk_id_fornecedor) {
         this.nome = nome;
         this.quantidade = quantidade;
         this.valor_unitario = valor_unitario;

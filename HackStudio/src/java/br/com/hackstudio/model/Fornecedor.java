@@ -9,13 +9,7 @@ public class Fornecedor {
     public Fornecedor() {
         
     }
-    public Fornecedor(int id, String nome, String endereço, String cnpj) {
-        this.id = id;
-        this.nome = nome;
-        this.endereço = endereço;
-        this.cnpj = cnpj;
-    }
-
+    
     public Fornecedor(String nome, String endereço, String cnpj) {
         this.nome = nome;
         this.endereço = endereço;

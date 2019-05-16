@@ -1,21 +1,20 @@
 package br.com.hackstudio.model;
 
-public class Tatuador {
+public class Funcionario {
     private int id;
     private String nome;
+    private String email;
     private String cpf;
     private String telefone;
-    private String endereço;
-    private String especialidade;
 
-    public Tatuador() {
+    public Funcionario() {
     }
-    public Tatuador(String nome, String cpf, String telefone, String endereço, String especialidade) {
+
+    public Funcionario(String nome, String email, String cpf, String telefone) {
         this.nome = nome;
+        this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.endereço = endereço;
-        this.especialidade = especialidade;
     }
 
     public int getId() {
@@ -34,6 +33,14 @@ public class Tatuador {
         this.nome = nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -49,21 +56,4 @@ public class Tatuador {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    public String getEndereço() {
-        return endereço;
-    }
-
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
-    }
-
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
-    }
-    
 }

@@ -12,16 +12,6 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id, String nome, String cpf, String email, String telefone, String facebook, String instagram) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefone = telefone;
-        this.facebook = facebook;
-        this.instagram = instagram;
-    }
-
     public Cliente(String nome, String cpf, String email, String telefone, String facebook, String instagram) {
         this.nome = nome;
         this.cpf = cpf;

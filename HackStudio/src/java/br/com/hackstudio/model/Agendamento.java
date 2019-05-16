@@ -7,12 +7,7 @@ public class Agendamento {
     private String fk_cpf_cliente;
     private int fk_id_tatuador;
 
-    public Agendamento(int id, String data, String horario, String fk_cpf_cliente, int fk_id_tatuador) {
-        this.id = id;
-        this.data = data;
-        this.horario = horario;
-        this.fk_cpf_cliente = fk_cpf_cliente;
-        this.fk_id_tatuador = fk_id_tatuador;
+    public Agendamento() {
     }
 
     public Agendamento(String data, String horario, String fk_cpf_cliente, int fk_id_tatuador) {
