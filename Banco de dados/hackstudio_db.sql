@@ -6,23 +6,11 @@ CREATE TABLE funcionarios(
     email varchar(40) NOT NULL,
     cpf varchar(11) NOT NULL,
     telefone varchar(11) NOT NULL,
+    username varchar(30) NOT NULL,
+    password varchar(30) NOT NULL,
 
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
-);
-
-CREATE TABLE usuarios(
-    id int AUTO_INCREMENT,
-    username varchar(30) NOT NULL,
-    password varchar(30) NOT NULL,
-    fk_id_funcionario int NOT NULL,
-
-    CONSTRAINT PK_ID
-        PRIMARY KEY (id),
-        
-    CONSTRAINT FK_ID_FUNCIONARIO
-        FOREIGN KEY fk_id_funcionario
-        REFERENCES funcionarios(id)
 );
 
 CREATE TABLE clientes(
