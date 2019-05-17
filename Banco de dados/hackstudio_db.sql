@@ -8,7 +8,10 @@ CREATE TABLE funcionarios(
     telefone varchar(11) NOT NULL,
     username varchar(30) NOT NULL,
     password varchar(30) NOT NULL,
-
+    
+    CONSTRAINT UC_USERNAME
+        UNIQUE (username),
+    
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
 );
