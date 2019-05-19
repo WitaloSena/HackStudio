@@ -5,18 +5,28 @@ public class Usuario {
     private String username;
     private String password;
     private String fk_id_funcionario;
+    private String email;
 
     public Usuario() {
     }
 
-    public Usuario(String username, String password, String fk_id_funcionario) {
+    public Usuario(String username, String password, String email, String fk_id_funcionario) {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.fk_id_funcionario = fk_id_funcionario;
     }
     
     public int getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setId(int id) {
