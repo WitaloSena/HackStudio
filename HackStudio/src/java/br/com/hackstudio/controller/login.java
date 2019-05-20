@@ -55,7 +55,7 @@ public class login extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
                     request.setAttribute("erro", Validate);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/").forward(request, response);
                     
                 }
             } catch (SQLException ex) {

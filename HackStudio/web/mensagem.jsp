@@ -1,9 +1,6 @@
 <%@include file="template/header.jsp" %>
 <!-- Painel de Mensagem -->
 
-<%@include file="template/main.jsp" %>
-
-
 <div class="container col-md-6 col-md-offset-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -17,6 +14,7 @@
         </div>
     </div>
 </div>
+                
 <%@include file="template/footer.jsp" %>                   
 
 

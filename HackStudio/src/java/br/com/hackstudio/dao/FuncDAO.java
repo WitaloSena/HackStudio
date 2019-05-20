@@ -1,10 +1,11 @@
 package br.com.hackstudio.dao;
 
 import br.com.hackstudio.model.Funcionario;
-import br.com.hackstudio.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import utils.ConnectionFactory;
 
@@ -63,9 +64,9 @@ public class FuncDAO implements Dao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /*  @Override
+   @Override
      public List<Object> get() {
-     List<Object> lstUsuarios = new ArrayList<>();
+     List<Object> lstFunc = new ArrayList<>();
         
      try
      {
@@ -76,21 +77,24 @@ public class FuncDAO implements Dao {
             
      while (rs.next())
      {
-     Usuario usuario = new Usuario(rs.getInt("id"),
-     rs.getString("username"),
-     rs.getInt("password"),
+     Funcionario funcionario = new Funcionario();
+     rs.getInt("id");
+     rs.getString("username");
+     rs.getInt("password");
                         
-     lstUsuarios.add(usuario);
+     lstFunc.add(funcionario);
      }
-     return lstUsuarios;
+     return lstFunc;
      }
      catch (SQLException ex){
      System.err.println("Erro: " + ex);
      }
      return null;
-     }*/
+     }
+
     @Override
-    public List<Object> get() {
+    public List<Object> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+ 
 }

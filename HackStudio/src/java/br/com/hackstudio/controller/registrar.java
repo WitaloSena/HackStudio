@@ -2,7 +2,6 @@ package br.com.hackstudio.controller;
 
 import br.com.hackstudio.dao.FuncDAO;
 import br.com.hackstudio.model.Funcionario;
-import br.com.hackstudio.model.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
