@@ -95,3 +95,5 @@ CREATE TABLE estoque(
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
 );
+
+CREATE TABLE `db_tester`.`usuarios` ( `id` INT(10) NOT NULL AUTO_INCREMENT , `username` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`username`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_unicode_ci;

@@ -1,19 +1,14 @@
-/**
- * utils/ConnectionFactory.java
- */
+
 package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Classe de conexão (fábrica de conexões)
- */
 public class ConnectionFactory {
 
     public static Object getConnetion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     // variáveis para a conexão
     private final String driver = "com.mysql.jdbc.Driver";
@@ -27,15 +22,11 @@ public class ConnectionFactory {
             // Configura o driver para a conexão
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
-            throw new SQLException("driver");
+            throw new SQLException("driver não encontrado");
         }
     }
 
-    /**
-     * Método que retorna uma conexão com o banco de dado
-     * @return
-     * @throws SQLException 
-     */
+
     public Connection getConnection() throws SQLException {
         // Variável para receber a conexão
         Connection conn = null;
@@ -50,11 +41,7 @@ public class ConnectionFactory {
         return conn;
     }
 
-    /**
-     * Método que retorna uma instância da conexão
-     * @return
-     * @throws SQLException 
-     */
+
     public static ConnectionFactory getInstance() throws SQLException {
         if (connectionFactory == null) {
             connectionFactory = new ConnectionFactory();
