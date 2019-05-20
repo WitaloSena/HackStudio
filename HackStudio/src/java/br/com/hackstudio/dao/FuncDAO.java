@@ -1,5 +1,6 @@
 package br.com.hackstudio.dao;
 
+import br.com.hackstudio.model.Funcionario;
 import br.com.hackstudio.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,26 +8,24 @@ import java.sql.SQLException;
 import java.util.List;
 import utils.ConnectionFactory;
 
-public class UsuarioDAO implements Dao {
+public class FuncDAO implements Dao {
 
     private final Connection conn;
 
-    public UsuarioDAO() throws SQLException {
+    public FuncDAO() throws SQLException {
         // Recebe a conexão com o banco de dados
         this.conn = ConnectionFactory.getInstance().getConnection();
     }
 
     @Override
-    public String save(Usuario usuario){
-
-        String sql = "INSERT INTO usuarios (username, password) VALUES (?, ?)";
+    public String save(Funcionario funcionario){
+        String sql = "INSERT INTO funcionarios (email, password) VALUES (?, ?)";
 
         try {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
-               ps.setString(1, usuario.getUsername());
-               ps.setString(2, usuario.getPassword());  
-               
+               ps.setString(1, funcionario.getEmail());
+               ps.setString(2, funcionario.getPassword());              
                ps.execute();          
             }
             conn.close();
@@ -94,6 +93,4 @@ public class UsuarioDAO implements Dao {
     public List<Object> get() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
 }

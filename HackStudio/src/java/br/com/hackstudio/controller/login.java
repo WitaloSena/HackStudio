@@ -1,48 +1,69 @@
-
 package br.com.hackstudio.controller;
 
+import br.com.hackstudio.dao.LoginDAO;
+import br.com.hackstudio.model.Funcionario;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class login extends HttpServlet {
 
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    public login() {
     }
 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        if (request.getParameter("acao").contains("login")) {
+
+            try {
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+                
+                Funcionario funcionario = new Funcionario();
+                
+                funcionario.setEmail(email);
+                funcionario.setPassword(password);
+                
+                LoginDAO loginDAO = new LoginDAO();
+                String Validate = loginDAO.autentifica(funcionario);
+                
+                if (Validate.equals("SUCESSO")) {
+                    request.setAttribute("email", email);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("erro", Validate);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
- 
     @Override
     public String getServletInfo() {
         return "Short description";

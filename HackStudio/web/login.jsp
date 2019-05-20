@@ -1,3 +1,9 @@
+<%-- 
+    Document   : login.jsp
+    Created on : 20/05/2019, 17:32:12
+    Author     : witalo
+--%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,18 +29,18 @@
 
         <div class="container">
             <div class="card card-login mx-auto mt-5">
-                <div class="card-header">Login</div>
+                <div class="card-header">Login</div>         
                 <div class="card-body">
-                    <form>
+                    <form action="login" method="post" >
                         <div class="form-group">
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
                                 <label for="inputEmail">Email</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required">
                                 <label for="inputPassword">Senha</label>
                             </div>
                         </div>
@@ -46,7 +52,7 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" name="acao" value="cadastrar">Login</button> 
+                        <button type="submit" class="btn btn-primary btn-block" name="acao" value="logar">Login</button> 
                     </form>
                     <div class="text-center">
                         <a class="d-block small mt-3" href="register.html">Registrar nova conta</a>
