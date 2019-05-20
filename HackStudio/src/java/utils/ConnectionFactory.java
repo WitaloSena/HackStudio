@@ -12,7 +12,7 @@ public class ConnectionFactory {
     }
     // variáveis para a conexão
     private final String driver = "com.mysql.jdbc.Driver";
-    private final String url = "jdbc:mysql://localhost:3306/db_tester";
+    private final String url = "jdbc:mysql://localhost:3306/hackstudio_db";
     private final String usuario = "root";
     private final String senha = "";
     private static ConnectionFactory connectionFactory = null;

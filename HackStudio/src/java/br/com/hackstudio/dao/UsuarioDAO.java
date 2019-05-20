@@ -25,10 +25,10 @@ public class UsuarioDAO implements Dao {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
                ps.setString(1, usuario.getUsername());
-               ps.setString(2, usuario.getPassword());               
+               ps.setString(2, usuario.getPassword());  
+               
                ps.execute();          
             }
-
             conn.close();
 
             return "Usuario salvo com sucesso";

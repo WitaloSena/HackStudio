@@ -35,7 +35,7 @@ public class registrar extends HttpServlet {
                 }
             }
         }
-        RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
+        RequestDispatcher redireciona = request.getRequestDispatcher("login.html");
         redireciona.forward(request, response);
     }
 
