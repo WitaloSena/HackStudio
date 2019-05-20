@@ -52,7 +52,7 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" name="acao" value="logar">Login</button> 
+                        <button type="submit" class="btn btn-primary btn-block" name="acao" value="login">Login</button> 
                     </form>
                     <div class="text-center">
                         <a class="d-block small mt-3" href="register.html">Registrar nova conta</a>
