@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
+<%-- 
+    Document   : footer
+    Created on : 19/05/2019, 21:52:13
+    Author     : witalo
+--%>
 <!-- Sticky Footer -->
 <footer class="sticky-footer">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright Â© HackStudio 2019</span>
+            <span>Copyright © HackStudio 2019</span>
         </div>
     </div>
 </footer>
@@ -32,10 +30,10 @@ and open the template in the editor.
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">Ã—</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Selecione "Sair" abaixo se vocÃª deseja finalizar a sua sessÃ£o.</div>
+            <div class="modal-body">Selecione "Sair" abaixo se você deseja finalizar a sua sessão.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 <a class="btn btn-primary" href="template/login.html">Sair</a>

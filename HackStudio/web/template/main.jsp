@@ -1,3 +1,8 @@
+<%-- 
+    Document   : main
+    Created on : 19/05/2019, 21:59:40
+    Author     : witalo
+--%>
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -5,7 +10,7 @@
       <li class="nav-item">
         <a class="nav-link" href="template/index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>PainÃ©l</span>
+          <span>Painél</span>
         </a>
       </li>
       <li class="nav-item dropdown">
@@ -49,9 +54,9 @@
         </ol>
 
         <!-- Page Content -->
-        <h1>Admin Page</h1>
-        <hr>
-        <p>Hello.</p>
+     
+     
 
       </div>
       <!-- /.container-fluid -->
+

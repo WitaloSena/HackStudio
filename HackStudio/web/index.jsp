@@ -4,8 +4,8 @@
     Author     : witalo
 --%>
 
-<%@include file="template/header.html" %>
+<%@include file="template/header.jsp" %>
 
-<%@include file="template/main.html" %>
+<%@include file="template/main.jsp" %>
 
-<%@include file="template/footer.html" %>
+<%@include file="template/footer.jsp" %>

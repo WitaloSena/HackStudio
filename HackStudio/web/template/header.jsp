@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<%-- 
+    Document   : header
+    Created on : 19/05/2019, 21:53:06
+    Author     : witalo
+--%>
 <html lang="pt-br">
 
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -81,8 +78,8 @@ and open the template in the editor.
                         <i class="fas fa-user-circle fa-fw"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">ConfiguraÃ§Ãµes</a>
-                        <a class="dropdown-item" href="#">NotificaÃ§Ãµes</a>
+                        <a class="dropdown-item" href="#">Configurações</a>
+                        <a class="dropdown-item" href="#">Notificações</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
                     </div>
@@ -90,3 +87,4 @@ and open the template in the editor.
             </ul>
 
         </nav>
+

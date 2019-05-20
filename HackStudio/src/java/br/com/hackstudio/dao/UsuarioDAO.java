@@ -26,7 +26,7 @@ public class UsuarioDAO implements Dao {
                PreparedStatement ps = conn.prepareStatement(sql)) {                
                ps.setString(1, usuario.getUsername());
                ps.setString(2, usuario.getPassword());               
-               ps.execute();           
+               ps.execute();          
             }
 
             conn.close();
