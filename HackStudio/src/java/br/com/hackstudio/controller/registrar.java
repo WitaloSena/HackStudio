@@ -21,9 +21,10 @@ public class registrar extends HttpServlet {
 
             try {
                 Funcionario funcionario = new Funcionario(); 
+                
                 funcionario.setEmail(request.getParameter("email"));
-                System.out.println(funcionario.getEmail());
-                funcionario.setPasswd(request.getParameter("password"));            
+                funcionario.setPasswd(request.getParameter("password")); 
+                
                 FuncDAO funcDAO = new FuncDAO();             
                 String result = funcDAO.save(funcionario);
                 request.setAttribute("mensagem", result);
@@ -34,7 +35,7 @@ public class registrar extends HttpServlet {
                 }
             }
         }
-        RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
         redireciona.forward(request, response);
     }
 

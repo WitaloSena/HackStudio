@@ -5,7 +5,6 @@
  */
 package br.com.hackstudio.dao;
 
-import br.com.hackstudio.model.Funcionario;
 import br.com.hackstudio.model.Tatuador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,18 +20,41 @@ import utils.ConnectionFactory;
  *
  * @author witalo
  */
-public class TatuadorDAO implements Dao {
+public class TatuadorDaoImplements implements TatuadorDAO {
 
     private final Connection conn;
 
-    public TatuadorDAO() throws SQLException {
+    public TatuadorDaoImplements() throws SQLException {
         // Recebe a conexão com o banco de dados
         this.conn = ConnectionFactory.getInstance().getConnection();
     }
 
     @Override
-    public String save(Funcionario funcionario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String save(Tatuador t) {
+        String sql = "INSERT INTO tatuadores (nome, email, cpf, endereco, telefone, especialidade, facebook, instagram) VALUES (?,?,?,?,?,?,?,?)";
+ 
+        try {
+            try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, t.getNome());
+                ps.setString(1, t.getEmail());
+                ps.setString(1, t.getEmail());
+                ps.setString(1, t.getCpf());
+                ps.setString(1, t.getEndereço());
+                ps.setString(1, t.getTelefone());
+                ps.setString(1, t.getEspecialidade());
+                ps.setString(1, t.getFacebook());
+                ps.setString(1, t.getInstagram());
+              
+                ps.execute();
+            }
+            conn.close();
+
+            return "Usuario salvo com sucesso";
+
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
     }
 
     @Override
@@ -57,7 +79,7 @@ public class TatuadorDAO implements Dao {
         String sql = "SELECT * FROM tatuadores ORDER BY nome ASC;";
 
         // Lista para receber os registros recuperados
-        List lstTatuadores = new ArrayList();
+        List<Tatuador> tatuadors = new ArrayList<>();
 
         try ( // Prepara a instrução SQL para ser enviada ao banco de dados
                 PreparedStatement ps = conn.prepareStatement(sql);
@@ -71,56 +93,25 @@ public class TatuadorDAO implements Dao {
                 // Cria um objeto Pessoa
                 Tatuador t = new Tatuador();
 
-                // Atribui ao objeto Pessoa os valores retornados do banco
                 t.setId(rs.getInt("id"));
                 t.setNome(rs.getString("nome"));
                 t.setEmail(rs.getString("email"));
+                t.setEspecialidade(rs.getString("especialidade"));
 
-                // Adiciona o objeto Pessoa na lista de pessoas
-                lstTatuadores.add(t);
+                tatuadors.add(t);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TatuadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TatuadorDaoImplements.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             // Fecha a conexão
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TatuadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TatuadorDaoImplements.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Retorna a lista com as pessoas encontradas
-        return lstTatuadores;
+        return tatuadors;
     }
-
-    public List<Tatuador> getAllRecords() {
-        
-        String sql = "SELECT * FROM tatuadores";
-        
-        List<Tatuador> list = new ArrayList<>();
-
-        try {
-         
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Tatuador t = new Tatuador();
-                t.setId(rs.getInt("id"));
-                t.setNome(rs.getString("nome"));
-                t.setEmail(rs.getString("email"));
-           
-                list.add(t);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return list;
-    }
-
-    @Override
-    public List<Object> get() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

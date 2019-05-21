@@ -8,9 +8,9 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="template/index.html">
+            <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Painél</span>
+                <span>Dashboard</span>
             </a>
         </li>
         <li class="nav-item dropdown">
@@ -28,17 +28,7 @@
                 <a class="dropdown-item" href="template/404.html">404 Page</a>
                 <a class="dropdown-item active" href="template/main.html">Blank Page</a>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="template/charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="template/tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
-        </li>
+        </li>      
     </ul>
 
     <div id="content-wrapper">

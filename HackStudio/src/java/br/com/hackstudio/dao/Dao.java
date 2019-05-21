@@ -10,7 +10,6 @@ public interface Dao {
     public boolean update(Object object);
     public boolean delete(int id);
     public Object get(int id);
-    public List<Object> get();
     public List<Tatuador> listar();
     
 }
