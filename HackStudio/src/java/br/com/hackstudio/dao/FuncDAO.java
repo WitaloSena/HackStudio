@@ -1,40 +1,46 @@
 package br.com.hackstudio.dao;
 
-import br.com.hackstudio.model.Usuario;
+import br.com.hackstudio.model.Funcionario;
+import br.com.hackstudio.model.Encriptador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import utils.ConnectionFactory;
 
-public class UsuarioDAO implements Dao {
+public class FuncDAO implements Dao {
 
     private final Connection conn;
 
-    public UsuarioDAO() throws SQLException {
+    public FuncDAO() throws SQLException {
         // Recebe a conexão com o banco de dados
         this.conn = ConnectionFactory.getInstance().getConnection();
     }
 
     @Override
-    public String save(Usuario usuario){
-
-        String sql = "INSERT INTO usuarios (username, password) VALUES (?, ?)";
-
+    public boolean save(Object object){
+        Funcionario funcionario = (Funcionario) object;
+        String sql = "INSERT INTO funcionarios (email, passwd, salt) VALUES (?, ?, ?)";
+        String salt = Encriptador.getSalt(30);
+        String senha = funcionario.getPasswd();
+        funcionario.setPasswd(Encriptador.generateSecurePassword(senha,salt));
         try {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
-               ps.setString(1, usuario.getUsername());
-               ps.setString(2, usuario.getPassword());  
-               
+               ps.setString(1, funcionario.getEmail());
+               ps.setString(2, funcionario.getPasswd());
+               ps.setString(3, funcionario.getSalt());
                ps.execute();          
             }
             conn.close();
 
-            return "Usuario salvo com sucesso";
+            return true;
 
         } catch (SQLException e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 
@@ -64,36 +70,39 @@ public class UsuarioDAO implements Dao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /*  @Override
+   @Override
      public List<Object> get() {
-     List<Object> lstUsuarios = new ArrayList<>();
+     List<Object> lstFunc = new ArrayList<>();
         
      try
      {
-     String comando = "select * from usuarios";
-     PreparedStatement stmt = conn.prepareStatement(comando);
-            
-     ResultSet rs = stmt.executeQuery();
-            
-     while (rs.next())
-     {
-     Usuario usuario = new Usuario(rs.getInt("id"),
-     rs.getString("username"),
-     rs.getInt("password"),
-                        
-     lstUsuarios.add(usuario);
-     }
-     return lstUsuarios;
+        String comando = "select * from usuarios";
+        PreparedStatement stmt = conn.prepareStatement(comando);
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next())
+        {
+            Funcionario funcionario = new Funcionario();
+            rs.getInt("id");
+            rs.getString("username");
+            rs.getInt("password");
+
+            lstFunc.add(funcionario);
+        }
+        return lstFunc;
      }
      catch (SQLException ex){
      System.err.println("Erro: " + ex);
      }
      return null;
-     }*/
-    @Override
-    public List<Object> get() {
+     }
+  
+
+    /*@Override
+    public List<Object> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
 
 }

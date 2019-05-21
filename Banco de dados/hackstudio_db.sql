@@ -1,13 +1,5 @@
 CREATE DATABASE hackstudio_db;
 
-CREATE TABLE usuarios (
-   id INT(10) NOT NULL AUTO_INCREMENT,  
-   username VARCHAR(255) NOT NULL,
-   password INT(255) NOT NULL,
-   tipo INT(2) NOT NULL DEFAULT '1',
-   PRIMARY KEY (`id`))
-   ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_unicode_ci;
-
 CREATE TABLE funcionarios(
     id int AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
@@ -15,7 +7,9 @@ CREATE TABLE funcionarios(
     cpf varchar(11) NOT NULL,
     telefone varchar(11) NOT NULL,
     username varchar(30) NOT NULL,
-    password varchar(30) NOT NULL,
+    passwd varchar(30) NOT NULL,
+    estado boolean NOT NULL DEFAULT TRUE,
+    admin_level boolean NOT NULL DEFAULT FALSE,
     
     CONSTRAINT UC_USERNAME
         UNIQUE (username),
@@ -103,5 +97,3 @@ CREATE TABLE estoque(
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
 );
-
-CREATE TABLE `db_tester`.`usuarios` ( `id` INT(10) NOT NULL AUTO_INCREMENT , `username` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`username`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_unicode_ci;

@@ -1,7 +1,7 @@
 package br.com.hackstudio.controller;
 
-import br.com.hackstudio.dao.UsuarioDAO;
-import br.com.hackstudio.model.Usuario;
+import br.com.hackstudio.dao.FuncDAO;
+import br.com.hackstudio.model.Funcionario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,14 +20,13 @@ public class registrar extends HttpServlet {
         if (request.getParameter("acao").contains("cadastrar")) {
 
             try {
-                Usuario usuario = new Usuario();
-                usuario.setUsername(request.getParameter("username"));
-                usuario.setPassword(request.getParameter("password"));
-                //usuario.setPassword(request.getParameter("password2"));
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
-                String resultado = usuarioDAO.save(usuario);
-
-                request.setAttribute("mensagem", resultado);
+                Funcionario funcionario = new Funcionario(); 
+                funcionario.setEmail(request.getParameter("email"));
+                System.out.println(funcionario.getEmail());
+                funcionario.setPasswd(request.getParameter("password"));            
+                FuncDAO funcDAO = new FuncDAO();             
+                boolean result = funcDAO.save(funcionario);
+                request.setAttribute("mensagem", result);
 
             } catch (SQLException e) {
                 if (e.getErrorCode() == 0) {
@@ -35,7 +34,7 @@ public class registrar extends HttpServlet {
                 }
             }
         }
-        RequestDispatcher redireciona = request.getRequestDispatcher("login.html");
+        RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
         redireciona.forward(request, response);
     }
 
