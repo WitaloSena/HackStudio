@@ -8,6 +8,8 @@ public class Funcionario {
     private String telefone;
     private String username;
     private String passwd;
+
+    private String salt;
     private String estado;
     private String admin_level;
 
@@ -23,6 +25,14 @@ public class Funcionario {
         this.passwd = passwd;
         this.estado = estado;
         this.admin_level = admin_level;
+    }
+    
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
     
     public int getId() {

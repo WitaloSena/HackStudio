@@ -5,6 +5,7 @@
  */
 package br.com.hackstudio.dao;
 
+import br.com.hackstudio.model.Encriptador;
 import br.com.hackstudio.model.Funcionario;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,6 +26,7 @@ public class LoginDAO {
 
         String email = funcionario.getEmail();
         String password = funcionario.getPasswd();
+        String salt = funcionario.getSalt();
         String sql = "SELECT * FROM funcionarios";
 
         Statement statement;
@@ -38,6 +40,8 @@ public class LoginDAO {
             while (resultSet.next()) {
                 String emailDB = resultSet.getString("email");
                 String passDB = resultSet.getString("password");
+                
+                boolean senhaOK = Encriptador.verifyUserPassword(password, passDB, salt);
                 
                 if(email.equals(emailDB) && password.equals(passDB)){
                     funcionario.setId(resultSet.getInt("id"));
