@@ -38,6 +38,34 @@ public class tatuadores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
+        if (request.getParameter("acao").contains("cadastrar")) {
+
+            System.out.println("OK");
+            Tatuador t = new Tatuador();
+            t.setNome(request.getParameter("nome"));
+            t.setEmail(request.getParameter("email"));
+            t.setCpf(request.getParameter("cpf"));
+            t.setEndereco(request.getParameter("endereco"));
+            t.setTelefone(request.getParameter("telefone"));
+            t.setEspecialidade(request.getParameter("especialidade"));
+            t.setFacebook(request.getParameter("facebook"));
+            t.setInstagram(request.getParameter("instagram"));
+
+            try {
+                TatuadorDaoImplements tdi = new TatuadorDaoImplements();
+                String result = tdi.save(t);
+                request.setAttribute("mensagem", result);
+
+            } catch (SQLException e) {
+                if (e.getErrorCode() == 0) {
+                    request.setAttribute("mensagem", "Não foi possível se comunicar com o banco de dados!");
+                }
+            }
+
+            RequestDispatcher redireciona = request.getRequestDispatcher("tatuador.jsp");
+            redireciona.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -79,22 +107,6 @@ public class tatuadores extends HttpServlet {
 
         }
 
-        if (request.getParameter("acao").contains("cadastrar")) {
-
-            Tatuador t = new Tatuador();
-            t.setNome(request.getParameter("nome"));
-            t.setEmail(request.getParameter("email"));
-            t.setCpf(request.getParameter("cpf"));
-            t.setEndereço(request.getParameter("endereco"));
-            t.setTelefone(request.getParameter("telefone"));
-            t.setEspecialidade(request.getParameter("especialidade"));
-            t.setFacebook(request.getParameter("facebook"));
-            t.setInstagram(request.getParameter("instagram"));
-
-        }
-        
-        
-        
     }
 
     /**

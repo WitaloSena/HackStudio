@@ -6,7 +6,7 @@ public class Tatuador {
     private String nome;
     private String email;
     private String cpf;
-    private String endereço;
+    private String endereco;
     private String telefone;
     private String facebook;
     private String instagram;
@@ -15,11 +15,11 @@ public class Tatuador {
     public Tatuador() {
     }
 
-    public Tatuador(String nome, String email, String cpf, String endereço, String telefone, String facebook, String instagram, String especialidade) {
+    public Tatuador(String nome, String email, String cpf, String endereco, String telefone, String facebook, String instagram, String especialidade) {
         this.nome = nome;
         this.nome = email;
         this.cpf = cpf;
-        this.endereço = endereço;
+        this.endereco = endereco;
         this.telefone = telefone;  
         this.facebook = facebook;
         this.instagram = instagram;
@@ -82,12 +82,12 @@ public class Tatuador {
         this.telefone = telefone;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereco(String endereço) {
+        this.endereco = endereço;
     }
 
     public String getEspecialidade() {

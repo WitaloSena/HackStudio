@@ -64,7 +64,7 @@
                             <div class="form-row">
                                 <div class="col-md-9 pb-3">
                                     <div class="form-label-group">
-                                        <input type="text" name="endereço" id="endereço" class="form-control" placeholder="endereço" required="required">
+                                        <input type="text" name="endereco" id="endereço" class="form-control" placeholder="endereço" required="required">
                                         <label for="endereço">endereço</label>
                                     </div>
                                 </div>                   

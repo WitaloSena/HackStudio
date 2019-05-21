@@ -23,5 +23,4 @@ public interface TatuadorDAO {
     public Object get(int id);
 
     public List<Tatuador> listar();
-
 }

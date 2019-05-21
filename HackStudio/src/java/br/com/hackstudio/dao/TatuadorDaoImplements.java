@@ -37,15 +37,13 @@ public class TatuadorDaoImplements implements TatuadorDAO {
             try (
                 PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, t.getNome());
-                ps.setString(1, t.getEmail());
-                ps.setString(1, t.getEmail());
-                ps.setString(1, t.getCpf());
-                ps.setString(1, t.getEndereço());
-                ps.setString(1, t.getTelefone());
-                ps.setString(1, t.getEspecialidade());
-                ps.setString(1, t.getFacebook());
-                ps.setString(1, t.getInstagram());
-              
+                ps.setString(2, t.getEmail());              
+                ps.setString(3, t.getCpf());
+                ps.setString(4, t.getEndereco());
+                ps.setString(5, t.getTelefone());
+                ps.setString(6, t.getEspecialidade());
+                ps.setString(7, t.getFacebook());
+                ps.setString(8, t.getInstagram());              
                 ps.execute();
             }
             conn.close();

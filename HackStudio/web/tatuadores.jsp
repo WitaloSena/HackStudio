@@ -8,7 +8,7 @@
 
 <%@include file="template/main.jsp" %>
 
-<%@include file="template/cardsTatuadorPage.jsp" %>
+<%@include file="template/cardsTatuadorPage.jsp" %> 
 
 <%@include file="template/tables.jsp" %>
 
