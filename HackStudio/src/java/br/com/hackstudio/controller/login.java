@@ -44,7 +44,7 @@ public class login extends HttpServlet {
                 Funcionario funcionario = new Funcionario();
                 
                 funcionario.setEmail(email);
-                funcionario.setPassword(password);
+                funcionario.setPasswd(password);
                 
                 LoginDAO loginDAO = new LoginDAO();
                 String Validate = loginDAO.autentifica(funcionario);

@@ -1,7 +1,11 @@
 package br.com.hackstudio.dao;
 
 import br.com.hackstudio.model.Funcionario;
+<<<<<<< HEAD
 import br.com.hackstudio.model.Tatuador;
+=======
+import br.com.hackstudio.model.Encriptador;
+>>>>>>> 4cb53cf59760b99a4ced551fe3de6945d0fb4f76
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,13 +25,16 @@ public class FuncDAO implements Dao {
 
     @Override
     public String save(Funcionario funcionario){
-        String sql = "INSERT INTO funcionarios (email, password) VALUES (?, ?)";
-
+        String sql = "INSERT INTO funcionarios (email, passwd, salt) VALUES (?, ?, ?)";
+        String salt = Encriptador.getSalt(30);
+        String senha = funcionario.getPasswd();
+        funcionario.setPasswd(Encriptador.generateSecurePassword(senha,salt));
         try {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
                ps.setString(1, funcionario.getEmail());
-               ps.setString(2, funcionario.getPassword());              
+               ps.setString(2, funcionario.getPasswd());
+               ps.setString(3, funcionario.getSalt());
                ps.execute();          
             }
             conn.close();
@@ -71,21 +78,21 @@ public class FuncDAO implements Dao {
         
      try
      {
-     String comando = "select * from usuarios";
-     PreparedStatement stmt = conn.prepareStatement(comando);
-            
-     ResultSet rs = stmt.executeQuery();
-            
-     while (rs.next())
-     {
-     Funcionario funcionario = new Funcionario();
-     rs.getInt("id");
-     rs.getString("username");
-     rs.getInt("password");
-                        
-     lstFunc.add(funcionario);
-     }
-     return lstFunc;
+        String comando = "select * from usuarios";
+        PreparedStatement stmt = conn.prepareStatement(comando);
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next())
+        {
+            Funcionario funcionario = new Funcionario();
+            rs.getInt("id");
+            rs.getString("username");
+            rs.getInt("password");
+
+            lstFunc.add(funcionario);
+        }
+        return lstFunc;
      }
      catch (SQLException ex){
      System.err.println("Erro: " + ex);
