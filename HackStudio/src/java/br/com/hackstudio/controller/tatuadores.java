@@ -37,22 +37,24 @@ public class tatuadores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         if (request.getParameter("acao").contains("todos")) {
+       
 
             TatuadorDAO tatuadorDAO = new TatuadorDAO();
 
-            List tatuador = new ArrayList();
+            List tatuadores = new ArrayList();
 
-            tatuadorDAO.listar();
+           tatuadores = tatuadorDAO.getAllRecords();
 
-            if (tatuador.isEmpty()) {
-
+            if (tatuadores.isEmpty()) {
+                System.out.println("Erro");
                 request.setAttribute("mensagem", "Nenhum tatuador cadastrado");
 
                 RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
                 redireciona.forward(request, response);
 
             }else {
-                request.setAttribute("todos", tatuador);                
+                System.out.println("tatoo controller");
+                request.setAttribute("listaTatuadores", tatuadores);
                 RequestDispatcher red = request.getRequestDispatcher("tatuadores.jsp");
             }
 

@@ -1,6 +1,7 @@
 package br.com.hackstudio.dao;
 
 import br.com.hackstudio.model.Funcionario;
+import br.com.hackstudio.model.Tatuador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,10 +92,12 @@ public class FuncDAO implements Dao {
      }
      return null;
      }
+  
 
     @Override
-    public List<Object> listar() {
+    public List<Tatuador> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
- 
+
+
 }

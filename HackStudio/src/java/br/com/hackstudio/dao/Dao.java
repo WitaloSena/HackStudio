@@ -2,6 +2,7 @@ package br.com.hackstudio.dao;
 
 
 import br.com.hackstudio.model.Funcionario;
+import br.com.hackstudio.model.Tatuador;
 import java.util.List;
 
 public interface Dao {   
@@ -10,6 +11,6 @@ public interface Dao {
     public boolean delete(int id);
     public Object get(int id);
     public List<Object> get();
-    public List<Object> listar();
+    public List<Tatuador> listar();
     
 }

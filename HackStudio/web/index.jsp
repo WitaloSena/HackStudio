@@ -8,4 +8,6 @@
 
 <%@include file="template/main.jsp" %>
 
+<%@include file="template/breadcrumb.jsp" %>
+
 <%@include file="template/footer.jsp" %>

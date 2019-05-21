@@ -51,39 +51,71 @@ public class TatuadorDAO implements Dao {
     }
 
     @Override
-    public List<Object> listar() {
+    public List<Tatuador> listar() {
 
-        String sql = "SELECT * FROM tatuadores ORDER BY nome ASC";
+        // Instrução SQL para recuperar os registros
+        String sql = "SELECT * FROM tatuadores ORDER BY nome ASC;";
 
-        List lstTatuador = new ArrayList();
+        // Lista para receber os registros recuperados
+        List lstTatuadores = new ArrayList();
 
-        try (
+        try ( // Prepara a instrução SQL para ser enviada ao banco de dados
                 PreparedStatement ps = conn.prepareStatement(sql);
+                // Objeto que armazenará os dados recuperados (ResultSet)
                 ResultSet rs = ps.executeQuery()) {
-
+            /**
+             * Percorre os registros retornados do banco de dados e coloca em
+             * uma lista (lstPessoas)
+             */
             while (rs.next()) {
-                Tatuador tatuador = new Tatuador();
-                tatuador.setId(rs.getInt("id"));
-                tatuador.setNome(rs.getString("nome"));
-                tatuador.setEmail(rs.getString("email"));
-                tatuador.setCpf(rs.getString("cpf"));
-                tatuador.setEndereço(rs.getString("endereço"));
-                tatuador.setTelefone(rs.getString("telefone"));
-                tatuador.setFacebook(rs.getString("facebook"));
-                tatuador.setInstagram(rs.getString("instagram"));
-                tatuador.setEspecialidade(rs.getString("especialidade"));
+                // Cria um objeto Pessoa
+                Tatuador t = new Tatuador();
 
-                lstTatuador.add(tatuador);
+                // Atribui ao objeto Pessoa os valores retornados do banco
+                t.setId(rs.getInt("id"));
+                t.setNome(rs.getString("nome"));
+                t.setEmail(rs.getString("email"));
 
+                // Adiciona o objeto Pessoa na lista de pessoas
+                lstTatuadores.add(t);
             }
-            conn.close();
-
         } catch (SQLException ex) {
-            System.out.println(ex);
+            Logger.getLogger(TatuadorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return lstTatuador;
+        try {
+            // Fecha a conexão
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TatuadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        // Retorna a lista com as pessoas encontradas
+        return lstTatuadores;
+    }
+
+    public List<Tatuador> getAllRecords() {
+        
+        String sql = "SELECT * FROM tatuadores";
+        
+        List<Tatuador> list = new ArrayList<>();
+
+        try {
+         
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Tatuador t = new Tatuador();
+                t.setId(rs.getInt("id"));
+                t.setNome(rs.getString("nome"));
+                t.setEmail(rs.getString("email"));
+           
+                list.add(t);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
     }
 
     @Override
