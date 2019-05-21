@@ -24,7 +24,7 @@ public class LoginDAO {
     public String autentifica(Funcionario funcionario) {
 
         String email = funcionario.getEmail();
-        String password = funcionario.getPassword();
+        String password = funcionario.getPasswd();
         String sql = "SELECT * FROM funcionarios";
 
         Statement statement;

@@ -23,7 +23,7 @@ public class registrar extends HttpServlet {
                 Funcionario funcionario = new Funcionario(); 
                 funcionario.setEmail(request.getParameter("email"));
                 System.out.println(funcionario.getEmail());
-                funcionario.setPassword(request.getParameter("password"));            
+                funcionario.setPasswd(request.getParameter("password"));            
                 FuncDAO funcDAO = new FuncDAO();             
                 String result = funcDAO.save(funcionario);
                 request.setAttribute("mensagem", result);

@@ -26,7 +26,7 @@ public class FuncDAO implements Dao {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
                ps.setString(1, funcionario.getEmail());
-               ps.setString(2, funcionario.getPassword());              
+               ps.setString(2, funcionario.getPasswd());              
                ps.execute();          
             }
             conn.close();
