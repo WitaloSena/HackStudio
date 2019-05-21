@@ -62,7 +62,7 @@ public class tatuadores extends HttpServlet {
                 }
             }
 
-            RequestDispatcher redireciona = request.getRequestDispatcher("tatuador.jsp");
+            RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
             redireciona.forward(request, response);
         }
 

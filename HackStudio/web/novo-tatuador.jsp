@@ -26,10 +26,13 @@
 
 
     </head>
+    
+    <%@include file="template/header.jsp" %>
+    <%@include file="template/main.jsp" %>
 
     <body class="bg-dark">
-        <div class="container">
-            <div class="card card-register mx-auto mt-5 ">
+        <div class="container pb-5">
+            <div class="card card-register mx-auto mt-2 ">
                 <div class="card-header">Registrar novo Tatuador</div>
                 <div class="card-body">
                     <form action="tatuadores" method="post" >
@@ -123,6 +126,8 @@
                 </div>
             </div>
         </div>
+        
+        <%@include file="template/footer.jsp" %>
 
         <!-- Bootstrap core JavaScript-->
         <script src="template/vendor/jquery/jquery.min.js"></script>
