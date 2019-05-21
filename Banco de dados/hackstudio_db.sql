@@ -7,8 +7,9 @@ CREATE TABLE funcionarios(
     cpf varchar(11) NOT NULL,
     telefone varchar(11) NOT NULL,
     username varchar(30) NOT NULL,
-    password varchar(30) NOT NULL,
-    tipo int(2) default 1
+    passwd varchar(30) NOT NULL,
+    estado boolean NOT NULL DEFAULT TRUE,
+    admin_level boolean NOT NULL DEFAULT FALSE,
     
     CONSTRAINT UC_USERNAME
         UNIQUE (username),
@@ -96,4 +97,3 @@ CREATE TABLE estoque(
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
 );
-
