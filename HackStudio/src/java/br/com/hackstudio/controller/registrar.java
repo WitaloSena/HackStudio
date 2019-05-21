@@ -26,7 +26,7 @@ public class registrar extends HttpServlet {
                 funcionario.setPasswd(request.getParameter("password")); 
                 
                 FuncDAO funcDAO = new FuncDAO();             
-                String result = funcDAO.save(funcionario);
+                boolean result = funcDAO.save(funcionario);
                 request.setAttribute("mensagem", result);
 
             } catch (SQLException e) {

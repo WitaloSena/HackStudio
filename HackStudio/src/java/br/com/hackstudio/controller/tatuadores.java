@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.hackstudio.controller;
 
 import br.com.hackstudio.dao.TatuadorDaoImplements;
@@ -38,7 +33,11 @@ public class tatuadores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
+<<<<<<< HEAD
         if (request.getParameter("acao").contains("cadastrar")) {
+=======
+           tatuadores = tatuadorDAO.get();
+>>>>>>> 93eb372e3f10064a1737c5fce641c8f3c437cbe9
 
             System.out.println("OK");
             Tatuador t = new Tatuador();
