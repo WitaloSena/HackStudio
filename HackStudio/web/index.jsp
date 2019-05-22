@@ -6,11 +6,5 @@
 
 <%@include file="template/header.jsp" %>
 <%@include file="template/main.jsp" %>
-<<<<<<< HEAD
-
 <%@include file="template/cardsIndexPage.jsp" %>
-
-=======
-<%@include file="template/breadcrumb.jsp" %>
->>>>>>> 93eb372e3f10064a1737c5fce641c8f3c437cbe9
 <%@include file="template/footer.jsp" %>

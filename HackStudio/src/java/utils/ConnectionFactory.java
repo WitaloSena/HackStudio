@@ -12,9 +12,9 @@ public class ConnectionFactory {
     }
     // variáveis para a conexão
     private final String driver = "com.mysql.jdbc.Driver";
-    private final String url = "jdbc:mysql://db4free.net:3306/hackstudio_db?useSSL=false";
-    private final String usuario = "hackstudio";
-    private final String senha = "P@$$uninove";
+    private final String url = "jdbc:mysql://localhost:3306/hackstudio_db";
+    private final String usuario = "root";
+    private final String senha = "";
     private static ConnectionFactory connectionFactory = null;
 
     private ConnectionFactory() throws SQLException {

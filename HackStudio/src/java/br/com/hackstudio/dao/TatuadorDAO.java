@@ -1,39 +1,38 @@
 package br.com.hackstudio.dao;
 
 import br.com.hackstudio.model.Tatuador;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
+
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import utils.ConnectionFactory;
->>>>>>> 93eb372e3f10064a1737c5fce641c8f3c437cbe9
 
 /**
  *
  * @author witalo.sena
  */
-public interface TatuadorDAO {
-
-    public String save(Tatuador t);
-
-    public boolean update(Object object);
-
-<<<<<<< HEAD
-    public boolean delete(int id);
-
-    public Object get(int id);
-
-    public List<Tatuador> listar();
-=======
+public class TatuadorDAO implements Dao{   
+    
+    private final Connection conn;
+    
+    public TatuadorDAO () throws SQLException{
+        this.conn = ConnectionFactory.getInstance().getConnection();
+    }
+   
     @Override
     public boolean save(Object object) {
         Tatuador tat = (Tatuador) object;
         
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("AnimeHirePU");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
         em.persist(tat);
@@ -59,9 +58,8 @@ public interface TatuadorDAO {
 
     @Override
     public List<Object> get() {
-
         // Instrução SQL para recuperar os registros
-        String sql = "SELECT * FROM tatuadores ORDER BY nome ASC;";
+        String sql = "SELECT * FROM tatuador ORDER BY nome ASC;";
 
         // Lista para receber os registros recuperados
         List lstTatuadores = new ArrayList();
@@ -70,10 +68,7 @@ public interface TatuadorDAO {
                 PreparedStatement ps = conn.prepareStatement(sql);
                 // Objeto que armazenará os dados recuperados (ResultSet)
                 ResultSet rs = ps.executeQuery()) {
-            /**
-             * Percorre os registros retornados do banco de dados e coloca em
-             * uma lista (lstPessoas)
-             */
+            
             while (rs.next()) {
                 // Cria um objeto Pessoa
                 Tatuador t = new Tatuador();
@@ -82,6 +77,7 @@ public interface TatuadorDAO {
                 t.setId(rs.getInt("id"));
                 t.setNome(rs.getString("nome"));
                 t.setEmail(rs.getString("email"));
+                t.setEspecialidade(rs.getString("especialidade"));
 
                 // Adiciona o objeto Pessoa na lista de pessoas
                 lstTatuadores.add(t);
@@ -101,37 +97,13 @@ public interface TatuadorDAO {
         return lstTatuadores;
     }
 
-    /*public List<Tatuador> getAllRecords() {
-        
-        String sql = "SELECT * FROM tatuadores";
-        
-        List<Tatuador> list = new ArrayList<>();
-
-        try {
-         
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Tatuador t = new Tatuador();
-                t.setId(rs.getInt("id"));
-                t.setNome(rs.getString("nome"));
-                t.setEmail(rs.getString("email"));
-           
-                list.add(t);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return list;
-    }*/
-
     /*@Override
     public List<Object> get() 
     {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudio");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager em = factory.createEntityManager();
-        List<Tatuador> lstTatuador = em.createQuery("select c from Cliente c").getResultList();
+        List<Tatuador> lstTatuador = em.createQuery("from tatuador").getResultList();
         return (List)lstTatuador;
     }*/
->>>>>>> 93eb372e3f10064a1737c5fce641c8f3c437cbe9
+
 }

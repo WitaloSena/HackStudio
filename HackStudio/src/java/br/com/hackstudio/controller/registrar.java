@@ -1,6 +1,7 @@
 package br.com.hackstudio.controller;
 
 import br.com.hackstudio.dao.FuncDAO;
+import br.com.hackstudio.model.Encriptador;
 import br.com.hackstudio.model.Funcionario;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,9 +22,10 @@ public class registrar extends HttpServlet {
 
             try {
                 Funcionario funcionario = new Funcionario(); 
-                
+                String salt = Encriptador.getSalt(30);
+                funcionario.setSalt(salt);
                 funcionario.setEmail(request.getParameter("email"));
-                funcionario.setPasswd(request.getParameter("password")); 
+                funcionario.setPasswd(Encriptador.generateSecurePassword(request.getParameter("password"),salt));
                 
                 FuncDAO funcDAO = new FuncDAO();             
                 boolean result = funcDAO.save(funcionario);

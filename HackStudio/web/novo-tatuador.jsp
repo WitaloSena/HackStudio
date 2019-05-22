@@ -35,7 +35,7 @@
             <div class="card card-register mx-auto mt-2 ">
                 <div class="card-header">Registrar novo Tatuador</div>
                 <div class="card-body">
-                    <form action="tatuadores" method="post" >
+                    <form action="tatuadores" method="post">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">

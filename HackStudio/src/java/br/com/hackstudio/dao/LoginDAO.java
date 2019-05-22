@@ -34,6 +34,7 @@ public class LoginDAO {
             
             while (resultSet.next()) {
                 String emailDB = resultSet.getString("email");
+                String saltDB = resultSet.getString("salt");
                 String passDB = resultSet.getString("password");
                 
                 //boolean senhaOK = Encriptador.verifyUserPassword(password, passDB, salt);

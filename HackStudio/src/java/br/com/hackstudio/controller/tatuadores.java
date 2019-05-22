@@ -1,6 +1,6 @@
 package br.com.hackstudio.controller;
 
-import br.com.hackstudio.dao.TatuadorDaoImplements;
+import br.com.hackstudio.dao.TatuadorDAO;
 import br.com.hackstudio.model.Tatuador;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,10 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author witalo
- */
 public class tatuadores extends HttpServlet {
 
     /**
@@ -33,37 +29,8 @@ public class tatuadores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
-<<<<<<< HEAD
-        if (request.getParameter("acao").contains("cadastrar")) {
-=======
-           tatuadores = tatuadorDAO.get();
->>>>>>> 93eb372e3f10064a1737c5fce641c8f3c437cbe9
 
-            System.out.println("OK");
-            Tatuador t = new Tatuador();
-            t.setNome(request.getParameter("nome"));
-            t.setEmail(request.getParameter("email"));
-            t.setCpf(request.getParameter("cpf"));
-            t.setEndereco(request.getParameter("endereco"));
-            t.setTelefone(request.getParameter("telefone"));
-            t.setEspecialidade(request.getParameter("especialidade"));
-            t.setFacebook(request.getParameter("facebook"));
-            t.setInstagram(request.getParameter("instagram"));
-
-            try {
-                TatuadorDaoImplements tdi = new TatuadorDaoImplements();
-                String result = tdi.save(t);
-                request.setAttribute("mensagem", result);
-
-            } catch (SQLException e) {
-                if (e.getErrorCode() == 0) {
-                    request.setAttribute("mensagem", "Não foi possível se comunicar com o banco de dados!");
-                }
-            }
-
-            RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
-            redireciona.forward(request, response);
-        }
+        
 
     }
 
@@ -79,14 +46,13 @@ public class tatuadores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         if (request.getParameter("acao").contains("todos")) {
-
-            try {
-                TatuadorDaoImplements tatuadorDAO = new TatuadorDaoImplements();
-
+            try {                
+                TatuadorDAO tatuador = new TatuadorDAO();
                 List tatuadores = new ArrayList();
 
-                tatuadores = tatuadorDAO.listar();
+                tatuadores = tatuador.get();
 
                 if (tatuadores.isEmpty()) {
                     System.out.println("Erro");
@@ -105,6 +71,8 @@ public class tatuadores extends HttpServlet {
             }
 
         }
+        
+        
 
     }
 
@@ -119,10 +87,33 @@ public class tatuadores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(tatuadores.class.getName()).log(Level.SEVERE, null, ex);
+        if (request.getParameter("acao").contains("cadastrar")) {
+            
+            System.out.println("Funcionou");
+            
+            Tatuador t = new Tatuador();
+            t.setNome(request.getParameter("nome"));
+            t.setEmail(request.getParameter("email"));
+            t.setCpf(request.getParameter("cpf"));
+            t.setEndereco(request.getParameter("endereco"));
+            t.setTelefone(request.getParameter("telefone"));
+            t.setEspecialidade(request.getParameter("especialidade"));
+            t.setFacebook(request.getParameter("facebook"));
+            t.setInstagram(request.getParameter("instagram"));
+
+            try {
+                TatuadorDAO tdi = new TatuadorDAO();
+                tdi.save(t);
+                //request.setAttribute("mensagem", result);
+
+            } catch (SQLException e) {
+                if (e.getErrorCode() == 0) {
+                    request.setAttribute("mensagem", "Não foi possível se comunicar com o banco de dados!");
+                }
+            }
+
+            RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
+            redireciona.forward(request, response);
         }
     }
 
