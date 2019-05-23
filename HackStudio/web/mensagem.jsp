@@ -2,7 +2,9 @@
 <!-- Painel de Mensagem -->
 <%@include file="template/main.jsp" %>
 
+<%@include  file="template/tables.jsp" %>
 
+<!--
 <div class="container col-md-6 col-md-offset-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -11,11 +13,11 @@
         <div class="panel-body text-justify">
             <h4>
                 <!-- A linha abaixo apresenta a mensagem gerada no Controle -->
-                <%out.print(request.getAttribute("mensagem"));%>
+               <!-- <%out.print(request.getAttribute("mensagem"));%> -->
             </h4>
         </div>
     </div>
-</div>
+</div> -->
                 
 <%@include file="template/footer.jsp" %>                   
 

@@ -42,21 +42,23 @@
                              * atributo listaPessoas originado do servlet
                              * Controle
                              */
-                            List<Tatuador> tatuadors = (ArrayList) request.getAttribute("listaTatuadores");
+                            List<Tatuador> tatuadores = (ArrayList) request.getAttribute("listaTatuadores");
                             System.out.println("work");
 
                             // Percorre a lista dos registros e apresenta no navegador
-                            for (Tatuador t : tatuadors) {
+                            for (Tatuador tatuador : tatuadores) {
                         %>
 
                         <tr>
-                      <!--  <td><%=t.getId()%></td> -->
-                            <td><%=t.getNome()%></td>
-                            <td><%=t.getEmail()%></td>
-                            <td><%=t.getEspecialidade()%></td>
-                            <td><a class="btn btn-primary" href="Controller?acao=agendamento&id=<%=t.getId()%>" role="button">Agendamentos</a></td>
-                            <td><a class="btn btn-info" href="Controller?acao=editar&id=<%=t.getId()%>" role="button">Editar</a>
-                            <td><a class="btn btn-danger" href="Controller?acao=excluir&id=<%=t.getId()%>" role="button">Excluir</a>
+                     
+                            <td><%=tatuador.getNome()%></td>
+                            <td><%=tatuador.getEmail()%></td>
+                            <td><%=tatuador.getEspecialidade()%></td>
+                            
+                            <td><a class="btn btn-primary" href="tatuadores?acao=agendamento&id=<%=tatuador.getId()%>">Agendamentos</a></td>
+                            <!--<td><a class="btn btn-primary" href="Controller?acao=agendamento&id=<%=tatuador.getId()%>" role="button">Agendamentos</a></td> -->
+                            <td><a class="btn btn-info" href="Controller?acao=editar&id=<%=tatuador.getId()%>" role="button">Editar</a>
+                            <td><a class="btn btn-danger" href="Controller?acao=excluir&id=<%=tatuador.getId()%>" role="button">Excluir</a>
                         </tr>
                         <%
                             } // Fim do laço de repetição

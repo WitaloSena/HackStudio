@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="HackStudioPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <!--<jta-data-source>JNDI</jta-data-source> -->
-    <class>br.com.hackstudio.model.Tatuador</class>
-    <properties>
-      <!-- Propriedades JDBC -->
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/hackstudio_db"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
-      <!-- Configurações específicas do Hibernate -->
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.format_sql" value="true"/>
-    </properties>
-=======
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="HackStudioPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <non-jta-data-source>HackStudioJNDI</non-jta-data-source>
+    <non-jta-data-source>jdbc/hackstudioJDNI</non-jta-data-source>
+    <class>br.com.hackstudio.model.Tatuador</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
->>>>>>> 7a0049c93734bbb58b1e6eaa501cecf2520185aa
+    <properties>
+      <property name="javax.persistence.schema-generation.create-source" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
   </persistence-unit>
 </persistence>

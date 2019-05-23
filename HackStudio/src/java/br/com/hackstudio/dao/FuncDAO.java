@@ -7,6 +7,7 @@ import br.com.hackstudio.model.Funcionario;
 
 
 import br.com.hackstudio.model.Encriptador;
+import br.com.hackstudio.model.Tatuador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -103,5 +104,6 @@ public class FuncDAO implements Dao {
      }
      return null;
      }
+
 
 }

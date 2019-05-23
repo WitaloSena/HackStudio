@@ -80,7 +80,7 @@ public class tatuadores extends HttpServlet {
              t.setFacebook(request.getParameter("facebook"));
              t.setInstagram(request.getParameter("instagram"));
              */
-            t.setNome("michael");
+            t.setNome("witalo");
             t.setEmail("witalo@email.com");
             t.setCpf("12345678912");
             t.setEndereco("rua candeias");
@@ -99,14 +99,17 @@ public class tatuadores extends HttpServlet {
         if (request.getParameter("acao").contains("todos")) {
             TatuadorDAO tatuadorDao = new TatuadorDAO();
 
-            List tatuadores = new ArrayList();
-            tatuadores = tatuadorDao.get();
-            request.setAttribute("listaPessoas", tatuadores);
+            List listaTatuadores = new ArrayList();
+            listaTatuadores = tatuadorDao.get();
+            request.setAttribute("listaTatuadores", listaTatuadores);
 
             // Redireciona para a página de listagem 
-            RequestDispatcher redireciona = request.getRequestDispatcher("listagem.jsp");
+            RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
             redireciona.forward(request, response);
-
+        }
+        
+        if (request.getParameter("acao").contains("agendamento")){
+            System.out.println("work");
         }
 
     }
