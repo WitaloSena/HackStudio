@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,8 +27,31 @@ public class tatuadores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
+        Tatuador t = new Tatuador();
+        /*
+         t.setNome(request.getParameter("nome"));
+         t.setEmail(request.getParameter("email"));
+         t.setCpf(request.getParameter("cpf"));
+         t.setEndereco(request.getParameter("endereco"));
+         t.setTelefone(request.getParameter("telefone"));
+         t.setEspecialidade(request.getParameter("especialidade"));
+         t.setFacebook(request.getParameter("facebook"));
+         t.setInstagram(request.getParameter("instagram"));
+         */
+        t.setNome("jonh doe");
+        t.setEmail("jonh@email.com");
+        t.setCpf("12345678912");
+        t.setEndereco("rua vegas");
+        t.setTelefone("telefone");
+        t.setEspecialidade("old School");
+        t.setFacebook("facebook");
+        t.setInstagram("instagram");
 
-        
+        TatuadorDAO tdi = new TatuadorDAO();
+        tdi.save(t);
+
+        RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+        redireciona.forward(request, response);
 
     }
 
@@ -46,33 +67,47 @@ public class tatuadores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        if (request.getParameter("acao").contains("cadastrar")) {
+
+            Tatuador t = new Tatuador();
+            /*
+             t.setNome(request.getParameter("nome"));
+             t.setEmail(request.getParameter("email"));
+             t.setCpf(request.getParameter("cpf"));
+             t.setEndereco(request.getParameter("endereco"));
+             t.setTelefone(request.getParameter("telefone"));
+             t.setEspecialidade(request.getParameter("especialidade"));
+             t.setFacebook(request.getParameter("facebook"));
+             t.setInstagram(request.getParameter("instagram"));
+             */
+            t.setNome("michael");
+            t.setEmail("witalo@email.com");
+            t.setCpf("12345678912");
+            t.setEndereco("rua candeias");
+            t.setTelefone("telefone");
+            t.setEspecialidade("old School");
+            t.setFacebook("facebook");
+            t.setInstagram("instagram");
+
+            TatuadorDAO tdi = new TatuadorDAO();
+            tdi.save(t);
+
+            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+            redireciona.forward(request, response);
+        }
+
         if (request.getParameter("acao").contains("todos")) {
-            try {                
-                TatuadorDAO tatuador = new TatuadorDAO();
-                List tatuadores = new ArrayList();
+            TatuadorDAO tatuadorDao = new TatuadorDAO();
 
-                tatuadores = tatuador.get();
+            List tatuadores = new ArrayList();
+            tatuadores = tatuadorDao.get();
+            request.setAttribute("listaPessoas", tatuadores);
 
-                if (tatuadores.isEmpty()) {
-                    System.out.println("Erro");
-                    request.setAttribute("mensagem", "Nenhum tatuador cadastrado");
-
-                    RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
-                    redireciona.forward(request, response);
-
-                } else {
-                    request.setAttribute("listaTatuadores", tatuadores);
-                    RequestDispatcher red = request.getRequestDispatcher("tatuadores.jsp");
-                    red.forward(request, response);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(tatuadores.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // Redireciona para a página de listagem 
+            RequestDispatcher redireciona = request.getRequestDispatcher("listagem.jsp");
+            redireciona.forward(request, response);
 
         }
-        
-        
 
     }
 
@@ -87,34 +122,7 @@ public class tatuadores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("acao").contains("cadastrar")) {
-            
-            System.out.println("Funcionou");
-            
-            Tatuador t = new Tatuador();
-            t.setNome(request.getParameter("nome"));
-            t.setEmail(request.getParameter("email"));
-            t.setCpf(request.getParameter("cpf"));
-            t.setEndereco(request.getParameter("endereco"));
-            t.setTelefone(request.getParameter("telefone"));
-            t.setEspecialidade(request.getParameter("especialidade"));
-            t.setFacebook(request.getParameter("facebook"));
-            t.setInstagram(request.getParameter("instagram"));
 
-            try {
-                TatuadorDAO tdi = new TatuadorDAO();
-                tdi.save(t);
-                //request.setAttribute("mensagem", result);
-
-            } catch (SQLException e) {
-                if (e.getErrorCode() == 0) {
-                    request.setAttribute("mensagem", "Não foi possível se comunicar com o banco de dados!");
-                }
-            }
-
-            RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
-            redireciona.forward(request, response);
-        }
     }
 
     /**
