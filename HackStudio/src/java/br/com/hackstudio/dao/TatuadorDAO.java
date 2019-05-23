@@ -59,7 +59,7 @@ public class TatuadorDAO implements Dao{
     @Override
     public List<Object> get() {
         // Instrução SQL para recuperar os registros
-        String sql = "SELECT * FROM tatuador ORDER BY nome ASC;";
+        String sql = "SELECT * FROM tatuadores ORDER BY nome ASC;";
 
         // Lista para receber os registros recuperados
         List lstTatuadores = new ArrayList();
