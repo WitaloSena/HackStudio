@@ -14,7 +14,7 @@ public class ConnectionFactory {
     private final String driver = "com.mysql.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost:3306/hackstudio_db";
     private final String usuario = "root";
-    private final String senha = "";
+    private final String senha = "123";
     private static ConnectionFactory connectionFactory = null;
 
     private ConnectionFactory() throws SQLException {

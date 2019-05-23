@@ -7,7 +7,8 @@ CREATE TABLE funcionarios(
     cpf varchar(11) NOT NULL,
     telefone varchar(11) NOT NULL,
     username varchar(30) NOT NULL,
-    passwd varchar(30) NOT NULL,
+    passwd varchar(300) NOT NULL,
+    salt varchar(300) NOT NULL,
     estado boolean NOT NULL DEFAULT TRUE,
     admin_level boolean NOT NULL DEFAULT FALSE,
     
@@ -59,11 +60,11 @@ CREATE TABLE agendamentos(
     
     CONSTRAINT FK_CPF_CLIENTE 
         FOREIGN KEY (fk_cpf_cliente)
-        REFERENCES cliente(cpf),
+        REFERENCES clientes(cpf),
 
     CONSTRAINT FK_ID_TATUADOR
         FOREIGN KEY (fk_id_tatudor)
-        REFERENCES tatuador(id),
+        REFERENCES tatuadores(id),
     
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
@@ -92,7 +93,7 @@ CREATE TABLE estoque(
 
     CONSTRAINT FK_ID_FORNECEDOR
         FOREIGN KEY (fk_id_fornecedor)
-        REFERENCES fornecedor(id),
+        REFERENCES fornecedores(id),
 
     CONSTRAINT PK_ID
         PRIMARY KEY (id)

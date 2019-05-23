@@ -43,7 +43,7 @@ public class login extends HttpServlet {
                 String password = request.getParameter("password");
                 
                 Funcionario funcionario = new Funcionario();
-                String salt = Encriptador.getSalt(30);
+                
                 funcionario.setEmail(email);
                 funcionario.setPasswd(password); 
                 

@@ -31,9 +31,8 @@ public class FuncDAO implements Dao {
         
         String sql = "INSERT INTO funcionarios (email, passwd, salt) VALUES (?, ?, ?)";
         
-        String salt = Encriptador.getSalt(30);
         String senha = funcionario.getPasswd();
-        funcionario.setPasswd(Encriptador.generateSecurePassword(senha,salt));
+        funcionario.setPasswd(senha);
         try {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                

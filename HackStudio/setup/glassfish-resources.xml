@@ -6,9 +6,17 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="hackstudio_db"/>
         <property name="User" value="root"/>
+<<<<<<< HEAD
         <property name="Password" value=""/>
         <property name="URL" value="jdbc:mysql://localhost:3306/hackstudio_db?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="JNDI" object-type="user" pool-name="mysql_hackstudio_db_rootPool"/>
+=======
+        <property name="Password" value="123"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/hackstudio_db?zeroDateTimeBehavior=convertToNull"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+    </jdbc-connection-pool>
+    <jdbc-resource enabled="true" jndi-name="HackStudioJNDI" object-type="user" pool-name="mysql_hackstudio_db_rootPool"/>
+>>>>>>> 7a0049c93734bbb58b1e6eaa501cecf2520185aa
 </resources>
