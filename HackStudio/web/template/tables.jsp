@@ -50,15 +50,14 @@
                         %>
 
                         <tr>
-                     
+
                             <td><%=tatuador.getNome()%></td>
                             <td><%=tatuador.getEmail()%></td>
                             <td><%=tatuador.getEspecialidade()%></td>
-                            
+
                             <td><a class="btn btn-primary" href="tatuadores?acao=agendamento&id=<%=tatuador.getId()%>">Agendamentos</a></td>
-                            <!--<td><a class="btn btn-primary" href="Controller?acao=agendamento&id=<%=tatuador.getId()%>" role="button">Agendamentos</a></td> -->
-                            <td><a class="btn btn-info" href="Controller?acao=editar&id=<%=tatuador.getId()%>" role="button">Editar</a>
-                            <td><a class="btn btn-danger" href="Controller?acao=excluir&id=<%=tatuador.getId()%>" role="button">Excluir</a>
+                           <td><a class="btn btn-info" href="tatuadores?acao=editar&id=<%=tatuador.getId()%>" role="button">Editar</a>
+                            <td><a class="btn btn-danger" href="tatuadores?acao=excluir&id=<%=tatuador.getId()%>" role="button">Excluir</a>
                         </tr>
                         <%
                             } // Fim do laço de repetição

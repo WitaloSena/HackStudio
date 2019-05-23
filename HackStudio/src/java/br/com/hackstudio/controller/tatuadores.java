@@ -27,32 +27,6 @@ public class tatuadores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
-        Tatuador t = new Tatuador();
-        /*
-         t.setNome(request.getParameter("nome"));
-         t.setEmail(request.getParameter("email"));
-         t.setCpf(request.getParameter("cpf"));
-         t.setEndereco(request.getParameter("endereco"));
-         t.setTelefone(request.getParameter("telefone"));
-         t.setEspecialidade(request.getParameter("especialidade"));
-         t.setFacebook(request.getParameter("facebook"));
-         t.setInstagram(request.getParameter("instagram"));
-         */
-        t.setNome("jonh doe");
-        t.setEmail("jonh@email.com");
-        t.setCpf("12345678912");
-        t.setEndereco("rua vegas");
-        t.setTelefone("telefone");
-        t.setEspecialidade("old School");
-        t.setFacebook("facebook");
-        t.setInstagram("instagram");
-
-        TatuadorDAO tdi = new TatuadorDAO();
-        tdi.save(t);
-
-        RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
-        redireciona.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,35 +41,21 @@ public class tatuadores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("acao").contains("cadastrar")) {
 
-            Tatuador t = new Tatuador();
-            /*
-             t.setNome(request.getParameter("nome"));
-             t.setEmail(request.getParameter("email"));
-             t.setCpf(request.getParameter("cpf"));
-             t.setEndereco(request.getParameter("endereco"));
-             t.setTelefone(request.getParameter("telefone"));
-             t.setEspecialidade(request.getParameter("especialidade"));
-             t.setFacebook(request.getParameter("facebook"));
-             t.setInstagram(request.getParameter("instagram"));
-             */
-            t.setNome("witalo");
-            t.setEmail("witalo@email.com");
-            t.setCpf("12345678912");
-            t.setEndereco("rua candeias");
-            t.setTelefone("telefone");
-            t.setEspecialidade("old School");
-            t.setFacebook("facebook");
-            t.setInstagram("instagram");
+        if (request.getParameter("acao").contains("editar")) {
+            
+            Tatuador tatuador = new Tatuador();
+            
+            tatuador.setId(Long.parseLong(request.getParameter("id")));
+            
+            TatuadorDAO tatuadorDao = new TatuadorDAO();         
 
-            TatuadorDAO tdi = new TatuadorDAO();
-            tdi.save(t);
-
-            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+            // Redireciona para a página de listagem 
+            RequestDispatcher redireciona = request.getRequestDispatcher("update.jsp");
             redireciona.forward(request, response);
         }
 
+        //select all
         if (request.getParameter("acao").contains("todos")) {
             TatuadorDAO tatuadorDao = new TatuadorDAO();
 
@@ -104,12 +64,26 @@ public class tatuadores extends HttpServlet {
             request.setAttribute("listaTatuadores", listaTatuadores);
 
             // Redireciona para a página de listagem 
-            RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
+            RequestDispatcher redireciona = request.getRequestDispatcher("tatuadores.jsp");
             redireciona.forward(request, response);
         }
-        
-        if (request.getParameter("acao").contains("agendamento")){
+
+        if (request.getParameter("acao").contains("agendamento")) {
             System.out.println("work");
+        }
+
+        if (request.getParameter("acao").contains("excluir")) {
+
+            Tatuador tatuador = new Tatuador();
+
+            tatuador.setId(Long.parseLong(request.getParameter("id")));
+
+            TatuadorDAO tatuadorDAO = new TatuadorDAO();
+            tatuadorDAO.delete(tatuador.getId());
+
+            response.setHeader("Refresh", "1; url=\"tatuadores?acao=todos\"");
+            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+            redireciona.forward(request, response);
         }
 
     }
@@ -125,6 +99,47 @@ public class tatuadores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        //create
+        if (request.getParameter("acao").contains("cadastrar")) {
+
+            Tatuador tatuador = new Tatuador();
+
+            tatuador.setNome(request.getParameter("nome"));
+            tatuador.setEmail(request.getParameter("email"));
+            tatuador.setCpf(request.getParameter("cpf"));
+            tatuador.setEndereco(request.getParameter("endereco"));
+            tatuador.setTelefone(request.getParameter("telefone"));
+            tatuador.setEspecialidade(request.getParameter("especialidade"));
+            tatuador.setFacebook(request.getParameter("facebook"));
+            tatuador.setInstagram(request.getParameter("instagram"));
+
+            TatuadorDAO tdi = new TatuadorDAO();
+            tdi.save(tatuador);
+
+            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+            redireciona.forward(request, response);
+        }
+
+        if (request.getParameter("acao").contains("alterar")) {
+    
+            Tatuador tatuador = new Tatuador();
+            tatuador.setNome(request.getParameter("nome"));
+            tatuador.setEmail(request.getParameter("email"));
+            tatuador.setCpf(request.getParameter("cpf"));
+            tatuador.setEndereco(request.getParameter("endereco"));
+            tatuador.setTelefone(request.getParameter("telefone"));
+            tatuador.setEspecialidade(request.getParameter("especialidade"));
+            tatuador.setFacebook(request.getParameter("facebook"));
+            tatuador.setInstagram(request.getParameter("instagram"));
+            
+            TatuadorDAO tatuadorDAO = new TatuadorDAO();
+            tatuadorDAO.update(tatuador);
+            response.setHeader("Refresh", "2; url=\"tatuadores?acao=todos\"");
+        
+            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+            redireciona.forward(request, response);
+        }
 
     }
 

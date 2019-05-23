@@ -58,12 +58,12 @@ public class FuncDAO implements Dao {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(Long id) {
         try {
             String comando = "delete from clientes where id = ?";
 
             PreparedStatement stmt = conn.prepareStatement(comando);
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -73,7 +73,7 @@ public class FuncDAO implements Dao {
         }
     }
     @Override
-    public Object get(int id) {
+    public Object get(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -91,7 +91,7 @@ public class FuncDAO implements Dao {
         while (rs.next())
         {
             Funcionario funcionario = new Funcionario();
-            rs.getInt("id");
+            rs.getLong("id");
             rs.getString("username");
             rs.getInt("password");
 
@@ -104,6 +104,5 @@ public class FuncDAO implements Dao {
      }
      return null;
      }
-
 
 }

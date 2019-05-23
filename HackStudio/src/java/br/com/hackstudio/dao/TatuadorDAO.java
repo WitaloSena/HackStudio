@@ -17,35 +17,66 @@ public class TatuadorDAO implements Dao {
     @Override
     public boolean save(Object object) {
 
-        Tatuador tat = (Tatuador) object;
+        Tatuador tatuador = (Tatuador) object;
+
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(tat);
+        entityManager.persist(tatuador);
         entityManager.getTransaction().commit();
+        entityManager.close();
+        factory.close();
         return true;
     }
 
     @Override
     public boolean update(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Tatuador tatuador = (Tatuador) object;
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.merge(tatuador);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        factory.close();
+        return true;
     }
 
     @Override
-    public boolean delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(Long id) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        entityManager.remove(entityManager.getReference(Tatuador.class, id));
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        factory.close();
+        return true;
+
     }
 
     @Override
-    public Object get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object get(Long id) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        entityManager.find(Tatuador.class, id);
+        entityManager.close();
+        factory.close();
+        return true;
 
     }
 
     @Override
     public List<Object> get() {
         //List<Object> listaTatuador = new ArrayList<>();
-        
+
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
@@ -56,10 +87,10 @@ public class TatuadorDAO implements Dao {
         List<Object> resultados = query.getResultList();
 
         entityManager.getTransaction().commit();
-        entityManager.close();        
-        
+        entityManager.close();
+
         return resultados;
 
-     
     }
+
 }
