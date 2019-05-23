@@ -8,7 +8,7 @@ CREATE TABLE funcionarios(
     telefone varchar(11) NOT NULL,
     username varchar(30) NOT NULL,
     passwd varchar(300) NOT NULL,
-	salt varchar(300) NOT NULL,
+    salt varchar(300) NOT NULL,
     estado boolean NOT NULL DEFAULT TRUE,
     admin_level boolean NOT NULL DEFAULT FALSE,
     
