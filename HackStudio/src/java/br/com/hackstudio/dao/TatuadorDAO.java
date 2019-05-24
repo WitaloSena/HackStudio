@@ -8,12 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-/**
- *
- * @author witalo.sena
- */
 public class TatuadorDAO implements Dao {
-
+    
     @Override
     public boolean save(Object object) {
 
@@ -22,6 +18,7 @@ public class TatuadorDAO implements Dao {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
+        
         entityManager.persist(tatuador);
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -36,7 +33,8 @@ public class TatuadorDAO implements Dao {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager entityManager = factory.createEntityManager();
-        entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin(); 
+        
         entityManager.merge(tatuador);
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -56,26 +54,29 @@ public class TatuadorDAO implements Dao {
         entityManager.close();
         factory.close();
         return true;
-
     }
-
+    
     @Override
     public Object get(Long id) {
-
+        
+        Tatuador tatuador; 
+        
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
 
-        entityManager.find(Tatuador.class, id);
+        tatuador = entityManager.find(Tatuador.class, id);
         entityManager.close();
         factory.close();
-        return true;
+        
+        List listTatuadores = new ArrayList();
+        listTatuadores.add(tatuador);
+        return listTatuadores ;
 
     }
 
     @Override
     public List<Object> get() {
-        //List<Object> listaTatuador = new ArrayList<>();
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("HackStudioPU");
         EntityManager entityManager = factory.createEntityManager();
@@ -83,14 +84,10 @@ public class TatuadorDAO implements Dao {
 
         String jpql = "select t from Tatuador t";
         Query query = entityManager.createQuery(jpql);
-
         List<Object> resultados = query.getResultList();
 
         entityManager.getTransaction().commit();
         entityManager.close();
-
         return resultados;
-
     }
-
 }

@@ -4,6 +4,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source>jdbc/hackstudioJNDI</non-jta-data-source>
     <class>br.com.hackstudio.model.Tatuador</class>
+    <class>br.com.hackstudio.model.Funcionario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

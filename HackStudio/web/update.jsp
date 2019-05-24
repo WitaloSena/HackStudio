@@ -40,14 +40,17 @@
                 <div class="card-body">  
                     <form action="tatuadores" method="post">
                         <%
-                            Tatuador tatuador = new Tatuador();                         
+                           
+                            List<Tatuador> tatuadors = (ArrayList) request.getAttribute("listaTatuadores");
+                            
+                            for (Tatuador tatuador : tatuadors) {
                      
                         %>
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="firstName" name="nome" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                                        <input type="text" id="firstName" value="<%=tatuador.getNome()%>" name="nome" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
                                         <label for="firstName">Nome</label>
                                     </div>
                                 </div>                        
@@ -63,7 +66,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="cpf" name="cpf" class="form-control" placeholder="cpf" required="required">
+                                        <input type="text" id="cpf" value="<%=tatuador.getCpf()%>" name="cpf" class="form-control" placeholder="cpf" required="required">
                                         <label for="cpf">CPF</label>
                                     </div>
 
@@ -74,7 +77,7 @@
                             <div class="form-row">
                                 <div class="col-md-9 pb-3">
                                     <div class="form-label-group">
-                                        <input type="text" name="endereco" id="endereço" class="form-control" placeholder="endereço" required="required">
+                                        <input type="text" name="endereco" id="endereço"value="<%=tatuador.getEndereco()%>" class="form-control" placeholder="endereço" required="required">
                                         <label for="endereço">endereço</label>
                                     </div>
                                 </div>                   
@@ -84,7 +87,7 @@
                             <div class="form-row">
                                 <div class="col-md-9">
                                     <div class="form-label-group">
-                                        <input type="phone" id="telefone" name="telefone" class="form-control" placeholder="telefone" required="required">
+                                        <input type="phone" id="telefone" value="<%=tatuador.getTelefone()%>" name="telefone" class="form-control" placeholder="telefone" required="required">
                                         <label for="telefone">telefone</label>
                                     </div>
                                 </div>
@@ -94,7 +97,7 @@
                             <div class="form-row">
                                 <div class="col-md-9">
                                     <div class="form-label-group">
-                                        <input type="text" id="especialidade" name="especialidade" class="form-control" placeholder="especialidade" required="required">
+                                        <input type="text" id="especialidade" value="<%=tatuador.getEspecialidade()%>" name="especialidade" class="form-control" placeholder="especialidade" required="required">
                                         <label for="especialidade">Especialidade</label>
                                     </div>
                                 </div>
@@ -104,7 +107,7 @@
                             <div class="form-row">
                                 <div class="col-md-8">
                                     <div class="form-label-group">
-                                        <input type="text" id="facebook" name="facebook" class="form-control" placeholder="facebook" required="required">
+                                        <input type="text" id="facebook" value="<%=tatuador.getFacebook()%>" name="facebook" class="form-control" placeholder="facebook" required="required">
                                         <label for="facebook">facebook</label>
                                     </div>
 
@@ -115,7 +118,7 @@
                             <div class="form-row">
                                 <div class="col-md-8">
                                     <div class="form-label-group">
-                                        <input type="text" id="instagram" name="instagram" class="form-control" placeholder="intagram" required="required">
+                                        <input type="text" id="instagram" value="<%=tatuador.getInstagram()%>" name="instagram" class="form-control" placeholder="intagram" required="required">
                                         <label for="instagram">instagram</label>
                                     </div>
 
@@ -128,9 +131,14 @@
                                     <button type="submit" class="btn btn-primary btn-block" name="acao" value="alterar">Registrar</button> 
                                 </div>                              
                             </div>
-                        </div>                         
+                        </div>
+                        <input type="hidden" name="id" value="<%=tatuador.getId()%>"> 
+                               
+                    <%
+                    } // Fim do laço de repetição
+                    %>   
                     </form>  
-                        <input type="hidden" name="id" value="<%=tatuador.getId()%>">               
+            
                 </div>
             </div>
         </div>

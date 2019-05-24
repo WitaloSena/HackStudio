@@ -43,12 +43,18 @@ public class tatuadores extends HttpServlet {
             throws ServletException, IOException {
 
         if (request.getParameter("acao").contains("editar")) {
-            
+
             Tatuador tatuador = new Tatuador();
-            
+
             tatuador.setId(Long.parseLong(request.getParameter("id")));
+
+            TatuadorDAO tatuadorDao = new TatuadorDAO();
+
+            List tatuadores = new ArrayList();
+
+            tatuadores = (List) tatuadorDao.get(tatuador.getId());
             
-            TatuadorDAO tatuadorDao = new TatuadorDAO();         
+            request.setAttribute("listaTatuadores", tatuadores);
 
             // Redireciona para a página de listagem 
             RequestDispatcher redireciona = request.getRequestDispatcher("update.jsp");
@@ -122,8 +128,9 @@ public class tatuadores extends HttpServlet {
         }
 
         if (request.getParameter("acao").contains("alterar")) {
-    
+
             Tatuador tatuador = new Tatuador();
+            tatuador.setId(Long.parseLong(request.getParameter("id")));
             tatuador.setNome(request.getParameter("nome"));
             tatuador.setEmail(request.getParameter("email"));
             tatuador.setCpf(request.getParameter("cpf"));
@@ -132,11 +139,11 @@ public class tatuadores extends HttpServlet {
             tatuador.setEspecialidade(request.getParameter("especialidade"));
             tatuador.setFacebook(request.getParameter("facebook"));
             tatuador.setInstagram(request.getParameter("instagram"));
-            
+
             TatuadorDAO tatuadorDAO = new TatuadorDAO();
             tatuadorDAO.update(tatuador);
             response.setHeader("Refresh", "2; url=\"tatuadores?acao=todos\"");
-        
+
             RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
             redireciona.forward(request, response);
         }

@@ -1,6 +1,19 @@
 package br.com.hackstudio.model;
 
-public class Funcionario {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "funcionario")
+public class Funcionario implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
     private String email;
@@ -26,7 +39,7 @@ public class Funcionario {
         this.estado = estado;
         this.admin_level = admin_level;
     }
-    
+
     public String getSalt() {
         return salt;
     }
@@ -34,7 +47,7 @@ public class Funcionario {
     public void setSalt(String salt) {
         this.salt = salt;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -106,5 +119,31 @@ public class Funcionario {
     public void setAdmin_level(String admin_level) {
         this.admin_level = admin_level;
     }
- 
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Funcionario other = (Funcionario) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "id=" + id + '}';
+    }  
 }
