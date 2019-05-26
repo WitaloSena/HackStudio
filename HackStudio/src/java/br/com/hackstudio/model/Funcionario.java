@@ -16,12 +16,9 @@ public class Funcionario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
+    private String sobrenome;
     private String email;
-    private String cpf;
-    private String telefone;
-    private String username;
     private String passwd;
-
     private String salt;
     private String estado;
     private String admin_level;
@@ -29,17 +26,24 @@ public class Funcionario implements Serializable {
     public Funcionario() {
     }
 
-    public Funcionario(String nome, String email, String cpf, String telefone, String username, String passwd, String estado, String admin_level) {
+    public Funcionario(String nome, String sobrenome, String email, String passwd, String estado, String admin_level) {
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.email = email;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.username = username;
         this.passwd = passwd;
         this.estado = estado;
         this.admin_level = admin_level;
     }
-
+    
+    public String getSobrenome()
+    {
+        return sobrenome;
+    }
+    public void setSobrenome(String sobrenome)
+    {
+        this.sobrenome = sobrenome;
+    }
+    
     public String getSalt() {
         return salt;
     }
@@ -71,31 +75,7 @@ public class Funcionario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    
     public String getPasswd() {
         return passwd;
     }

@@ -1,7 +1,6 @@
 package br.com.hackstudio.controller;
 
 import br.com.hackstudio.dao.LoginDAO;
-import br.com.hackstudio.model.Encriptador;
 import br.com.hackstudio.model.Funcionario;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -39,15 +38,16 @@ public class login extends HttpServlet {
         if (request.getParameter("acao").contains("login")) {
 
             try {
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
                 
                 Funcionario funcionario = new Funcionario();
+                LoginDAO loginDAO = new LoginDAO();
+                
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
                 
                 funcionario.setEmail(email);
                 funcionario.setPasswd(password); 
                 
-                LoginDAO loginDAO = new LoginDAO();
                 String Validate = loginDAO.autentifica(funcionario);
                 System.out.println(Validate);
                 

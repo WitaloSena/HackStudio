@@ -1,7 +1,3 @@
-<%@page import="br.com.hackstudio.model.Tatuador"%>
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -32,22 +28,27 @@
                 <div class="card-body">
                     <form action="registrar" method="post" >
                         <div class="form-group">
-                           <!-- <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-row">
                                 <div class="col-md-8">
                                     <div class="form-label-group">
-                                        <input type="text" id="firstName" name="username" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
-                                        <label for="firstName">Nome de usuario</label>
+                                        <input type="text" id="inputNome" name="nome" class="form-control" placeholder="Nome" required="required">
+                                        <label for="inputNome">Nome</label>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-6">
-                                     <div class="form-label-group">
-                                         <input type="text" id="lastName" name="sname" class="form-control" placeholder="Last name" required="required">
-                                         <label for="lastName">Ultimo nome</label>
-                                     </div>
-                                 </div> 
                             </div>
-                        </div> -->
-                        <div class="form-group">
+                        </div> 
+                            <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-8">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputSobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" required="required">
+                                        <label for="inputSobrenome">Sobrenome</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                            <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-8">
                                     <div class="form-label-group">
@@ -77,7 +78,7 @@
                             <div class="form-row">
                                 <div class="col-md-8">
                                     <button type="submit" class="btn btn-primary btn-block" name="acao" value="cadastrar">Registrar</button> 
-                                </div>                              
+                                </div>
                             </div>
                         </div>                         
                     </form>

@@ -21,15 +21,22 @@ public class registrar extends HttpServlet {
         if (request.getParameter("acao").contains("cadastrar")) {
 
             try {
+                
+                FuncDAO funcDAO = new FuncDAO();             
                 Funcionario funcionario = new Funcionario(); 
+                
                 String salt = Encriptador.getSalt(30);
+                
                 funcionario.setSalt(salt);
+                funcionario.setNome(request.getParameter("nome"));
+                funcionario.setSobrenome(request.getParameter("sobrenome"));
                 funcionario.setEmail(request.getParameter("email"));
                 funcionario.setPasswd(Encriptador.generateSecurePassword(request.getParameter("password"),salt));
                 
-                FuncDAO funcDAO = new FuncDAO();             
                 boolean result = funcDAO.save(funcionario);
                 request.setAttribute("mensagem", result);
+                RequestDispatcher redireciona = request.getRequestDispatcher("login.jsp");
+                redireciona.forward(request, response);
 
             } catch (SQLException e) {
                 if (e.getErrorCode() == 0) {

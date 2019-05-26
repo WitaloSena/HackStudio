@@ -45,13 +45,10 @@ public class tatuadores extends HttpServlet {
         if (request.getParameter("acao").contains("editar")) {
 
             Tatuador tatuador = new Tatuador();
-
-            tatuador.setId(Long.parseLong(request.getParameter("id")));
-
+            List tatuadores = new ArrayList();
             TatuadorDAO tatuadorDao = new TatuadorDAO();
 
-            List tatuadores = new ArrayList();
-
+            tatuador.setId(Long.parseLong(request.getParameter("id")));
             tatuadores = (List) tatuadorDao.get(tatuador.getId());
             
             request.setAttribute("listaTatuadores", tatuadores);

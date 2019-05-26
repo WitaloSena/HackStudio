@@ -1,14 +1,6 @@
 package br.com.hackstudio.dao;
 
 import br.com.hackstudio.model.Funcionario;
-
-
-//import br.com.hackstudio.model.Encriptador;
-
-
-import br.com.hackstudio.model.Encriptador;
-import br.com.hackstudio.model.Tatuador;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +22,8 @@ public class FuncDAO implements Dao {
     public boolean save(Object object){
         Funcionario funcionario = (Funcionario) object;
         
-        String sql = "INSERT INTO funcionarios (email, passwd, salt) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO funcionarios (email, passwd, salt, nome, sobrenome)"
+                + " VALUES (?, ?, ?)";
         
         String senha = funcionario.getPasswd();
         funcionario.setPasswd(senha);
@@ -40,6 +33,8 @@ public class FuncDAO implements Dao {
                ps.setString(1, funcionario.getEmail());
                ps.setString(2, funcionario.getPasswd());
                ps.setString(3, funcionario.getSalt());
+               ps.setString(4, funcionario.getNome());
+               ps.setString(5, funcionario.getSobrenome());
                ps.execute();          
             }
             conn.close();
@@ -91,18 +86,20 @@ public class FuncDAO implements Dao {
         while (rs.next())
         {
             Funcionario funcionario = new Funcionario();
-            rs.getLong("id");
-            rs.getString("username");
-            rs.getInt("password");
-
+                rs.getLong("id");
+                rs.getString("nome");
+                rs.getString("sobrenome");
+                rs.getString("email");
+                rs.getString("password");
+                rs.getString("salt");
             lstFunc.add(funcionario);
         }
         return lstFunc;
      }
      catch (SQLException ex){
-     System.err.println("Erro: " + ex);
+        System.err.println("Erro: " + ex);
      }
-     return null;
+        return null;
      }
 
 }

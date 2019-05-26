@@ -36,16 +36,21 @@ public class LoginDAO {
                     String passDB = resultSet.getString("passwd"); //Encriptado
                     String emailDB = resultSet.getString("email");
                     String saltDB = resultSet.getString("salt");
+                    int admlevel = resultSet.getInt("admin_level");
 
                     boolean senhaOK = Encriptador.verifyUserPassword(password, passDB, saltDB);
 
                     if(email.equals(emailDB) && senhaOK){
-                        funcionario.setId(resultSet.getInt("id"));
-                        return "SUCESSO";
-
+                        if(admlevel == 1){
+                            funcionario.setId(resultSet.getInt("id"));
+                            return "ADMIN";
+                        }
+                        else
+                        {
+                            return "SUCESSO";
+                        }
                     }
-                }
-                
+                }                
             }
           
         } catch (Exception ex) {
