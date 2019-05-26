@@ -37,13 +37,7 @@
                     </thead>            
                     <tbody>  
                         <%
-                            /**
-                             * Cria uma lista para receber os registros do
-                             * atributo listaPessoas originado do servlet
-                             * Controle
-                             */
-                            List<Tatuador> tatuadores = (ArrayList) request.getAttribute("listaTatuadores");
-                            System.out.println("work");
+                            List<Tatuador> tatuadores = (List) request.getAttribute("listaTatuadores");
 
                             // Percorre a lista dos registros e apresenta no navegador
                             for (Tatuador tatuador : tatuadores) {

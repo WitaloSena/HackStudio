@@ -41,7 +41,7 @@
                     <form action="tatuadores" method="post">
                         <%
                            
-                            List<Tatuador> tatuadors = (ArrayList) request.getAttribute("listaTatuadores");
+                            List<Tatuador> tatuadors = (List) request.getAttribute("listaTatuadores");
                             
                             for (Tatuador tatuador : tatuadors) {
                      

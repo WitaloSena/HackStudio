@@ -22,19 +22,18 @@ public class FuncDAO implements Dao {
     public boolean save(Object object){
         Funcionario funcionario = (Funcionario) object;
         
-        String sql = "INSERT INTO funcionarios (email, passwd, salt, nome, sobrenome)"
-                + " VALUES (?, ?, ?)";
+        String sql = "INSERT INTO funcionarios (nome, sobrenome, email, passwd, salt) VALUES (?, ?, ?, ?, ?)";
         
-        String senha = funcionario.getPasswd();
-        funcionario.setPasswd(senha);
+        //String senha = funcionario.getPasswd();
+        //funcionario.setPasswd(senha);
         try {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
-               ps.setString(1, funcionario.getEmail());
-               ps.setString(2, funcionario.getPasswd());
-               ps.setString(3, funcionario.getSalt());
-               ps.setString(4, funcionario.getNome());
-               ps.setString(5, funcionario.getSobrenome());
+               ps.setString(1, funcionario.getNome());
+               ps.setString(2, funcionario.getSobrenome());
+               ps.setString(3, funcionario.getEmail());
+               ps.setString(4, funcionario.getPasswd());
+               ps.setString(5, funcionario.getSalt());
                ps.execute();          
             }
             conn.close();

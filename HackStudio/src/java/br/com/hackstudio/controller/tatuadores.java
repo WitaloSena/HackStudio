@@ -4,7 +4,6 @@ import br.com.hackstudio.dao.TatuadorDAO;
 import br.com.hackstudio.model.Tatuador;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +44,7 @@ public class tatuadores extends HttpServlet {
         if (request.getParameter("acao").contains("editar")) {
 
             Tatuador tatuador = new Tatuador();
-            List tatuadores = new ArrayList();
+            List tatuadores;
             TatuadorDAO tatuadorDao = new TatuadorDAO();
 
             tatuador.setId(Long.parseLong(request.getParameter("id")));
@@ -62,7 +61,7 @@ public class tatuadores extends HttpServlet {
         if (request.getParameter("acao").contains("todos")) {
             TatuadorDAO tatuadorDao = new TatuadorDAO();
 
-            List listaTatuadores = new ArrayList();
+            List listaTatuadores;
             listaTatuadores = tatuadorDao.get();
             request.setAttribute("listaTatuadores", listaTatuadores);
 

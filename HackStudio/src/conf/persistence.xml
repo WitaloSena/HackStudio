@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="HackStudioPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <non-jta-data-source>jdbc/hackstudioJNDI</non-jta-data-source>
+  <persistence-unit name="HackStudioPU" transaction-type="JTA">
+    <jta-data-source>jdbc/hackstudioJNDI</jta-data-source>
     <class>br.com.hackstudio.model.Tatuador</class>
-    <class>br.com.hackstudio.model.Funcionario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
-      <property name="javax.persistence.schema-generation.create-source" value="true"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
     </properties>
   </persistence-unit>
 </persistence>

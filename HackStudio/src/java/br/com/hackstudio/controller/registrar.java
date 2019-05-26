@@ -18,34 +18,6 @@ public class registrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
-        if (request.getParameter("acao").contains("cadastrar")) {
-
-            try {
-                
-                FuncDAO funcDAO = new FuncDAO();             
-                Funcionario funcionario = new Funcionario(); 
-                
-                String salt = Encriptador.getSalt(30);
-                
-                funcionario.setSalt(salt);
-                funcionario.setNome(request.getParameter("nome"));
-                funcionario.setSobrenome(request.getParameter("sobrenome"));
-                funcionario.setEmail(request.getParameter("email"));
-                funcionario.setPasswd(Encriptador.generateSecurePassword(request.getParameter("password"),salt));
-                
-                boolean result = funcDAO.save(funcionario);
-                request.setAttribute("mensagem", result);
-                RequestDispatcher redireciona = request.getRequestDispatcher("login.jsp");
-                redireciona.forward(request, response);
-
-            } catch (SQLException e) {
-                if (e.getErrorCode() == 0) {
-                    request.setAttribute("mensagem", "Não foi possível se comunicar com o banco de dados!");
-                }
-            }
-        }
-        RequestDispatcher redireciona = request.getRequestDispatcher("mensagem.jsp");
-        redireciona.forward(request, response);
     }
 
     @Override
@@ -61,11 +33,36 @@ public class registrar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(registrar.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (request.getParameter("acao").contains("cadastrar")) {
+
+            try {
+
+                FuncDAO funcDAO = new FuncDAO();
+                Funcionario funcionario = new Funcionario();
+
+                String salt = Encriptador.getSalt(30);
+
+                funcionario.setSalt(salt);
+
+                funcionario.setNome(request.getParameter("nome"));
+                funcionario.setSobrenome(request.getParameter("sobrenome"));
+                funcionario.setEmail(request.getParameter("email"));
+                funcionario.setPasswd(Encriptador.generateSecurePassword(request.getParameter("password"), salt));
+
+                funcDAO.save(funcionario);
+                //request.setAttribute("mensagem", result);
+                RequestDispatcher redireciona = request.getRequestDispatcher("login.jsp");
+                redireciona.forward(request, response);
+
+            } catch (SQLException e) {
+                if (e.getErrorCode() == 0) {
+                    request.setAttribute("mensagem", "Não foi possível se comunicar com o banco de dados!");
+                }
+            }
         }
+        RequestDispatcher redireciona = request.getRequestDispatcher("login.jsp");
+        redireciona.forward(request, response);
     }
 
     @Override

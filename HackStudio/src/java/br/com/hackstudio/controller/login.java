@@ -49,7 +49,6 @@ public class login extends HttpServlet {
                 funcionario.setPasswd(password); 
                 
                 String Validate = loginDAO.autentifica(funcionario);
-                System.out.println(Validate);
                 
                 if (Validate.equals("SUCESSO")) {
                     request.setAttribute("email", email);

@@ -1,4 +1,4 @@
-CREATE DATABASE hackstudio_db;
+CREATE DATABASE hackstudio_db Character set utf8 collate utf8_unicode_ci;
 
 CREATE TABLE funcionarios(
     id int AUTO_INCREMENT,
@@ -17,23 +17,8 @@ CREATE TABLE funcionarios(
         PRIMARY KEY (id)
 );
 
-CREATE TABLE clientes(
-    id int AUTO_INCREMENT,
-    nome varchar(50) NOT NULL,
-    email varchar(40) NOT NULL,
-    cpf varchar(11) NOT NULL,
-    telefone varchar(11) NOT NULL,
-    facebook varchar(50),
-    instagram varchar(50),
-    
-    CONSTRAINT PK_ID
-        PRIMARY KEY (id),
 
-    CONSTRAINT UC_CPF 
-        UNIQUE (cpf)
-)ENGINE=InnoDB;
-
-CREATE TABLE tatuadores(
+CREATE TABLE tatuador(
     id int AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
     email varchar(40) NOT NULL,
@@ -51,6 +36,22 @@ CREATE TABLE tatuadores(
         UNIQUE (cpf)
 );
 
+CREATE TABLE clientes(
+    id int AUTO_INCREMENT,
+    nome varchar(50) NOT NULL,
+    email varchar(40) NOT NULL,
+    cpf varchar(11) NOT NULL,
+    telefone varchar(11) NOT NULL,
+    facebook varchar(50),
+    instagram varchar(50),
+    
+    CONSTRAINT PK_ID
+        PRIMARY KEY (id),
+
+    CONSTRAINT UC_CPF 
+        UNIQUE (cpf)
+);
+
 CREATE TABLE agendamentos(
     id int AUTO_INCREMENT,
     data varchar(10) NOT NULL,
@@ -61,11 +62,11 @@ CREATE TABLE agendamentos(
     
     CONSTRAINT FK_CPF_CLIENTE 
         FOREIGN KEY (fk_id_cliente)
-        REFERENCES clientes(cpf),
+        REFERENCES clientes(id),
 
     CONSTRAINT FK_ID_TATUADOR
         FOREIGN KEY (fk_id_tatudor)
-        REFERENCES tatuadores(id),
+        REFERENCES tatuador(id),
     
     CONSTRAINT PK_ID
         PRIMARY KEY (id)
