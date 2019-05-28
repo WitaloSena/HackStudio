@@ -47,7 +47,7 @@
                             <td><%=tatuador.getEmail()%></td>
                             <td><%=tatuador.getEspecialidade()%></td>
 
-                            <td><a class="btn btn-primary" href="tatuadores?acao=agendamento&id=<%=tatuador.getId()%>">Agendamentos</a></td>
+                            <td><a class="btn btn-primary"  data-toggle="modal" data-target="#ModalLongoExemplo" href="">Agendamentos</a></td>
                             <td><a class="btn btn-info" href="tatuadores?acao=editar&id=<%=tatuador.getId()%>" role="button">Editar</a>
                             <td><a class="btn btn-danger" href="tatuadores?acao=excluir&id=<%=tatuador.getId()%>" role="button">Excluir</a>
                         </tr>
@@ -60,6 +60,28 @@
         </div>
         <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
     </div>
+</div>
+            
+            <!-- Modal -->
+<div class="modal fade" id="ModalLongoExemplo" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalLongoExemplo">Agendamentos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p>Não há agendamentos disponíveis</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <!--<button type="button" class="btn btn-primary">Salvar mudanças</button> -->
+      </div>
+    </div>
+  </div>
 </div>
 <!-- /.container-fluid -->
 
