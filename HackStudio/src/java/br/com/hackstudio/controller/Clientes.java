@@ -174,7 +174,10 @@ public class Clientes extends HttpServlet {
             } catch (Exception e) {
             }
 
-            response.setHeader("Refresh", "2; url=\"clientes?acao=todos\"");
+            response.setHeader("Refresh", "1; url=\"clientes?acao=todos\"");
+            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+            redireciona.forward(request, response);
+
 
         }
 
