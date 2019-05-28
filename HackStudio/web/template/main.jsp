@@ -13,7 +13,7 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Pages</span>
@@ -28,7 +28,7 @@
                 <a class="dropdown-item" href="template/404.html">404 Page</a>
                 <a class="dropdown-item active" href="template/main.html">Blank Page</a>
             </div>
-        </li>      
+        </li>  -->    
     </ul>
 
      <div id="content-wrapper">

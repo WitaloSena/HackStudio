@@ -1,7 +1,7 @@
 package br.com.hackstudio.model;
 
 public class Cliente {
-    private int id;
+    private Long id;
     private String nome;
     private String cpf;
     private String email;
@@ -11,21 +11,14 @@ public class Cliente {
 
     public Cliente() {
     }
+    
+    
 
-    public Cliente(String nome, String cpf, String email, String telefone, String facebook, String instagram) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefone = telefone;
-        this.facebook = facebook;
-        this.instagram = instagram;
-    }
-        
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,4 +69,7 @@ public class Cliente {
     public void setInstagram(String instagram) {
         this.instagram = instagram;
     }
+    
+    
+   
 }

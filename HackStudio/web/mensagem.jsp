@@ -2,7 +2,7 @@
 <!-- Painel de Mensagem -->
 <%@include file="template/main.jsp" %>
 
-<%@include  file="template/tables.jsp" %>
+<!-- <%@include  file="template/tables.jsp" %> -->
 
 <!--
 <div class="container col-md-6 col-md-offset-3">

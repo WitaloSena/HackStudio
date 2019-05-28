@@ -1,27 +1,39 @@
 package br.com.hackstudio.model;
 
-public class Estoque {
-    private int id;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "estoque")
+public class Estoque implements Serializable{
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
     private String quantidade;
     private double valor_unitario;
-    private int fk_id_fornecedor;
+   // private int fk_id_fornecedor;
 
     public Estoque() {
     }
 
-    public Estoque(String nome, String quantidade, double valor_unitario, int fk_id_fornecedor) {
+    public Estoque(String nome, String quantidade, double valor_unitario) {
         this.nome = nome;
         this.quantidade = quantidade;
         this.valor_unitario = valor_unitario;
-        this.fk_id_fornecedor = fk_id_fornecedor;
+   
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -49,11 +61,4 @@ public class Estoque {
         this.valor_unitario = valor_unitario;
     }
 
-    public int getFk_id_fornecedor() {
-        return fk_id_fornecedor;
-    }
-
-    public void setFk_id_fornecedor(int fk_id_fornecedor) {
-        this.fk_id_fornecedor = fk_id_fornecedor;
-    }
 }
