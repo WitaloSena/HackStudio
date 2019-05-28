@@ -5,7 +5,7 @@
 --%>
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="template/index.html">Dashboard</a>
+        <a href="../index.jsp">Dashboard</a>
     </li>
     <li class="breadcrumb-item active">Admin Page</li>
 </ol>
@@ -44,7 +44,7 @@
                 </span>
             </a>
         </div>
-    </div>
+    </div> <!--
     <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white bg-success o-hidden h-100">
             <div class="card-body">
@@ -60,7 +60,7 @@
                 </span>
             </a>
         </div>
-    </div>
+    </div> 
    <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
@@ -76,6 +76,6 @@
                 </span>
             </a>
         </div>
-    </div> 
+    </div> -->
 </div>
 </div>

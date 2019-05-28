@@ -24,8 +24,8 @@ public class FuncDAO implements Dao {
         
         String sql = "INSERT INTO funcionarios (nome, sobrenome, email, passwd, salt) VALUES (?, ?, ?, ?, ?)";
         
-        //String senha = funcionario.getPasswd();
-        //funcionario.setPasswd(senha);
+        String senha = funcionario.getPasswd();
+        funcionario.setPasswd(senha);
         try {
             try (
                PreparedStatement ps = conn.prepareStatement(sql)) {                
@@ -54,7 +54,7 @@ public class FuncDAO implements Dao {
     @Override
     public boolean delete(Long id) {
         try {
-            String comando = "delete from clientes where id = ?";
+            String comando = "delete from funcionarios where id = ?";
 
             PreparedStatement stmt = conn.prepareStatement(comando);
             stmt.setLong(1, id);
@@ -73,27 +73,28 @@ public class FuncDAO implements Dao {
 
     @Override
      public List<Object> get() {
-     List<Object> lstFunc = new ArrayList<>();
+     List<Object> listFunc = new ArrayList<>();
         
      try
      {
-        String comando = "select * from usuarios";
+        String comando = "select * from funcionarios";
         PreparedStatement stmt = conn.prepareStatement(comando);
 
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next())
-        {
+        {           
             Funcionario funcionario = new Funcionario();
-                rs.getLong("id");
-                rs.getString("nome");
-                rs.getString("sobrenome");
-                rs.getString("email");
-                rs.getString("password");
-                rs.getString("salt");
-            lstFunc.add(funcionario);
+            funcionario.setId(rs.getInt("id"));
+            funcionario.setNome(rs.getString("nome"));
+            funcionario.setSobrenome(rs.getString("sobrenome"));
+            funcionario.setEmail(rs.getString("email"));
+            funcionario.setPasswd(rs.getString("password"));
+            funcionario.setSalt(rs.getString("salt"));
+      
+            listFunc.add(funcionario);
         }
-        return lstFunc;
+        return listFunc;
      }
      catch (SQLException ex){
         System.err.println("Erro: " + ex);

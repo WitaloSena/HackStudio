@@ -5,9 +5,9 @@
 --%>
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="template/index.html">Dashboard</a>
+        <a href="index.jsp">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Admin Page</li>
+    <li class="breadcrumb-item active"></li>
 </ol>
 
 <!--Page Content -->
@@ -35,7 +35,7 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                 </div>
-                <div class="mr-5">Novo cliente</div>
+                <div class="mr-5">Cadastrar Cliente</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="novo-cliente.jsp">
                 <span class="float-left">Cadastrar</span>
@@ -44,7 +44,7 @@
                 </span>
             </a>
         </div>
-    </div>
+    </div> <!--
     <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white bg-success o-hidden h-100">
             <div class="card-body">
@@ -76,6 +76,6 @@
                 </span>
             </a>
         </div>
-    </div> 
+    </div> -->
 </div>
 </div>

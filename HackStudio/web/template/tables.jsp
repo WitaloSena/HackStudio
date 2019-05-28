@@ -39,32 +39,27 @@
                         <%
                             List<Tatuador> tatuadores = (List) request.getAttribute("listaTatuadores");
 
-                            // Percorre a lista dos registros e apresenta no navegador
                             for (Tatuador tatuador : tatuadores) {
                         %>
 
                         <tr>
-
                             <td><%=tatuador.getNome()%></td>
                             <td><%=tatuador.getEmail()%></td>
                             <td><%=tatuador.getEspecialidade()%></td>
 
                             <td><a class="btn btn-primary" href="tatuadores?acao=agendamento&id=<%=tatuador.getId()%>">Agendamentos</a></td>
-                           <td><a class="btn btn-info" href="tatuadores?acao=editar&id=<%=tatuador.getId()%>" role="button">Editar</a>
+                            <td><a class="btn btn-info" href="tatuadores?acao=editar&id=<%=tatuador.getId()%>" role="button">Editar</a>
                             <td><a class="btn btn-danger" href="tatuadores?acao=excluir&id=<%=tatuador.getId()%>" role="button">Excluir</a>
                         </tr>
-                        <%
-                            } // Fim do laço de repetição
-                        %>
-
                     </tbody>
                 </table>
+                <%
+                    } // Fim do laço de repetição
+                %>
             </div>
         </div>
         <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
     </div>
-
-
 </div>
 <!-- /.container-fluid -->
 

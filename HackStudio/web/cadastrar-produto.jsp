@@ -26,6 +26,9 @@
 
 
     </head>
+    
+    <%@include file="template/header.jsp" %>
+    <%@include file="template/main.jsp" %>
 
     <body class="bg-dark">
         <div class="container">
@@ -75,6 +78,7 @@
                 </div>
             </div>
         </div>
+            
 
         <!-- Bootstrap core JavaScript-->
         <script src="template/vendor/jquery/jquery.min.js"></script>

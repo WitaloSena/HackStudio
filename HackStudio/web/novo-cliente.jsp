@@ -8,7 +8,6 @@
 <html lang="pt-br">
 
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,10 +22,8 @@
         <!-- Custom styles for this template-->
         <link href="template/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="template/scss/_login.scss" type="text/css"/>
-
-
     </head>
-    
+
     <%@include file="template/header.jsp" %>
     <%@include file="template/main.jsp" %>
 
@@ -59,7 +56,6 @@
                                         <input type="text" id="cpf" name="cpf" class="form-control" placeholder="cpf" required="required">
                                         <label for="cpf">CPF</label>
                                     </div>
-
                                 </div>
                             </div>
                         </div>            
@@ -80,7 +76,6 @@
                                         <input type="text" id="facebook" name="facebook" class="form-control" placeholder="facebook" required="required">
                                         <label for="facebook">facebook</label>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -91,7 +86,6 @@
                                         <input type="text" id="instagram" name="instagram" class="form-control" placeholder="intagram" required="required">
                                         <label for="instagram">instagram</label>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -106,16 +100,6 @@
                 </div>
             </div>
         </div>
-        
         <%@include file="template/footer.jsp" %>
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="template/vendor/jquery/jquery.min.js"></script>
-        <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
-
     </body>
-
 </html>

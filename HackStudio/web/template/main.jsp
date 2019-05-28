@@ -13,28 +13,44 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <!-- <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
+                <i class="fas fa-anchor"></i>
+                <span>Tatuadores</span>
+                
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Login Screens:</h6>
-                <a class="dropdown-item" href="template/login.html">Login</a>
-                <a class="dropdown-item" href="template/register.html">Register</a>
-                <a class="dropdown-item" href="template/forgot-password.html">Forgot Password</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Other Pages:</h6>
-                <a class="dropdown-item" href="template/404.html">404 Page</a>
-                <a class="dropdown-item active" href="template/main.html">Blank Page</a>
+                <!--<h6 class="dropdown-header">Login Screens:</h6> -->
+                <a class="dropdown-item" href="novo-tatuador.jsp">Cadastrar Tatuador</a>
+                <a class="dropdown-item" href="tatuadores?acao=todos">Ver Todos</a>
+               <!-- <div class="dropdown-divider"></div>     -->      
             </div>
-        </li>  -->    
+        </li>  
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"> </i>
+                <span> Clientes</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+               <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
+                <a class="dropdown-item" href="novo-cliente.jsp">Cadastrar Cliente</a>
+                <a class="dropdown-item" href="clientes?acao=todos">Ver todos</a>
+          
+            </div>
+        </li> 
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Estoque</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="cadastrar-produto.jsp">Cadastrar Produto</a>
+                <a class="dropdown-item" href="estoque?acao=todos">Ver todos</a>
+         
+            </div>
+        </li>
     </ul>
-
-     <div id="content-wrapper">
-
+    <div id="content-wrapper">
         <div class="container-fluid">
-
-
-        <!-- /.container-fluid -->
+            <!-- /.container-fluid -->
 

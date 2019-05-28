@@ -71,16 +71,6 @@ public class Clientes extends HttpServlet {
             }
         }
 
-        if (request.getParameter("acao").contains("excluir")) {
-
-            Cliente cliente = new Cliente();
-            cliente.setId(Long.parseLong(request.getParameter("id")));
-            ClienteDao clienteDao = new ClienteDao();
-            clienteDao.delete(cliente.getId());
-            response.setHeader("Refresh", "5; url=\"clientes?acao=todos\"");
-            RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
-            redireciona.forward(request, response);
-        }
 
         // Verifica se o botão Alterar foi acionado
     }
@@ -88,6 +78,22 @@ public class Clientes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        if (request.getParameter("acao").contains("excluir")) {
+
+            try {
+                Cliente cliente = new Cliente();
+                cliente.setId(Long.parseLong(request.getParameter("id")));
+                ClienteDao clienteDao = new ClienteDao();
+                clienteDao.delete(cliente.getId());
+                response.setHeader("Refresh", "1; url=\"clientes?acao=todos\"");
+                RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp");
+                redireciona.forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         if (request.getParameter("acao").contains("editar")) {
 

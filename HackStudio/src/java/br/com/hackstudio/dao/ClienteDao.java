@@ -6,7 +6,6 @@
 package br.com.hackstudio.dao;
 
 import br.com.hackstudio.model.Cliente;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +43,6 @@ public class ClienteDao implements Dao {
                 ps.setString(4, cliente.getTelefone());
                 ps.setString(5, cliente.getFacebook());
                 ps.setString(6, cliente.getInstagram());
-
                 ps.execute();
             }
             conn.close();
@@ -65,22 +63,21 @@ public class ClienteDao implements Dao {
 
         try {
             try (
-                PreparedStatement ps = conn.prepareStatement(sql)) {
+                    PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, cliente.getNome());
                 ps.setString(2, cliente.getTelefone());
                 ps.setString(3, cliente.getEmail());
                 ps.setString(4, cliente.getCpf());
                 ps.setString(5, cliente.getFacebook());
-                ps.setString(6, cliente.getInstagram());             
+                ps.setString(6, cliente.getInstagram());
                 ps.setLong(7, cliente.getId());
                 ps.executeUpdate();
             }
-  
             conn.close();
             return true;
 
         } catch (SQLException e) {
-    
+
         }
         return false;
 
@@ -88,7 +85,18 @@ public class ClienteDao implements Dao {
 
     @Override
     public boolean delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String comando = "delete from clientes where id = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(comando);
+            stmt.setLong(1, id);
+            stmt.execute();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Erro: " + e);
+            return false;
+
+        }
     }
 
     @Override
@@ -159,6 +167,5 @@ public class ClienteDao implements Dao {
             System.err.println("Erro: " + ex);
         }
         return null;
-
     }
 }

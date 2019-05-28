@@ -26,7 +26,7 @@
 
 
     </head>
-    
+
     <%@include file="template/header.jsp" %>
     <%@include file="template/main.jsp" %>
 
@@ -125,9 +125,7 @@
                     </form>                  
                 </div>
             </div>
-        </div>
-        
-        <%@include file="template/footer.jsp" %>
+        </div>      
 
         <!-- Bootstrap core JavaScript-->
         <script src="template/vendor/jquery/jquery.min.js"></script>

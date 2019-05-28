@@ -1,6 +1,8 @@
 package br.com.hackstudio.model;
 
-public class Cliente {
+
+public class Cliente  {
+
     private Long id;
     private String nome;
     private String cpf;
